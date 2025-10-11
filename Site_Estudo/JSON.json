@@ -1,0 +1,1177 @@
+{
+  "version": "auto-from-zip+abc+cs_labels+ii_labels+pms_labels_only+ci_labels_only+pmi_labels_only+is_labels_only+ted_labels_only",
+  "images": [
+    {
+      "id": "Caninos_Inf_1",
+      "regiao": "Caninos Inf.",
+      "src": "Site_Estudo/Caninos_Inferiores/Caninos_Inf_1.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Forame mentual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Inf_2",
+      "regiao": "Caninos Inf.",
+      "src": "Site_Estudo/Caninos_Inferiores/Caninos_Inf_2.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Base da mandíbula",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Inf_3",
+      "regiao": "Caninos Inf.",
+      "src": "Site_Estudo/Caninos_Inferiores/Caninos_Inf_3.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Forame mentual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Inf_4",
+      "regiao": "Caninos Inf.",
+      "src": "Site_Estudo/Caninos_Inferiores/Caninos_Inf_4.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Eminência mentoniana",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Base da mandíbula",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Inf_5",
+      "regiao": "Caninos Inf.",
+      "src": "Site_Estudo/Caninos_Inferiores/Caninos_Inf_5.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Forame mentual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_1",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_1.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Fossa Nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho da Fossa Nasal",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_10",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_10.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Y invertido de Ennis",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_11",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_11.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Fossa nasal",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_2",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_2.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Seio Maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_3",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_3.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Y invertido de Ennis",
+          "aliases": []
+        },
+        {
+          "letra": "d",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "e",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_4",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_4.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_5",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_5.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Y invertido de Ennis",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_6",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_6.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_7",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_7.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Y invertido de Ennis",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_8",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_8.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Fossa Nasal",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Caninos_Sup_9",
+      "regiao": "Caninos Sup.",
+      "src": "Site_Estudo/Caninos_Superiores/Caninos_Sup_9.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_1",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_1.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Base da mandíbula",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_10",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_10.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Base da mandíbula",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Eminência mentoniana",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Espinhas Genianas",
+          "aliases": ["Tubérculos Genianos"]
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_11",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_11.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Eminencia mentoniana",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Base da mandíbula",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Projeção do lábio inferior",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_12",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_12.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Eminência mentoniana",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_2",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_2.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Foramina lingual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_3",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_3.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Espinhas Genianas",
+          "aliases": ["Tubérculos Genianos"]
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_4",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_4.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Espinhas genianas",
+          "aliases": ["Tubérculos Genianos"]
+        },
+        {
+          "letra": "b",
+          "canonical": "Eminência mentoniana",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_5",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_5.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Canal Nutriente",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Foramina lingual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_6",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_6.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Foramina lingual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_7",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_7.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Eminência mentoniana",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_8",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_8.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Espinhas Genianas",
+          "aliases": ["Tubérculos Genianos"]
+        },
+        {
+          "letra": "b",
+          "canonical": "Base da mandíbula",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Canal Nutriente",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Inf_9",
+      "regiao": "Incisivos Inf.",
+      "src": "Site_Estudo/Incisivos_Inferiores/Incisivos_Inf_9.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Foramina lingual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_1",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_1.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Sutura Intermaxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_10",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_10.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Forame incisivo",
+          "aliases": ["Forame Palatino Anterior"]
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_11",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_11.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Fosseta Mirtiforme",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_2",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_2.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Fossa Nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Espinha Nasal Anterior",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "d",
+          "canonical": "Sutura Intermaxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_3",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_3.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Septo Nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Fossa Nasal",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "d",
+          "canonical": "Sutura intermaxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_4",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_4.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Concha nasal inferior",
+          "aliases": ["Corneto nasal inferior"]
+        },
+        {
+          "letra": "b",
+          "canonical": "Septo Nasal",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "d",
+          "canonical": "Espinha nasal anterior",
+          "aliases": []
+        },
+        {
+          "letra": "e",
+          "canonical": "Sutura Intermaxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_5",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_5.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Forame incisivo",
+          "aliases": ["Forame Palatino Anterior"]
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_6",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_6.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Forame Incisivo",
+          "aliases": ["Forame Palatino Anterior"]
+        },
+        {
+          "letra": "c",
+          "canonical": "Projeção do Nariz",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_7",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_7.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Espinha nasal anterior",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Sutura intermaxilar",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Projeção do lábio",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_8",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_8.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Fossa nasal",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Incisivos_Sup_9",
+      "regiao": "Incisivos Sup.",
+      "src": "Site_Estudo/Incisivos_Superiores/Incisivos_Sup_9.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Fossa nasal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Sutura intermaxilar",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Assoalho da fossa nasal",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_1",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_1.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Limite superior do canal mandibular",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Forame mentual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_10",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_10.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Canal mandibular",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_11",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_11.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Forame mentual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_2",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_2.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Base da mandíbula",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Limite superior do canal mandibular",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Canal mandibular",
+          "aliases": []
+        },
+        {
+          "letra": "d",
+          "canonical": "Forame mentual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_3",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_3.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Forame mentual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_4",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_4.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Forame mentual",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_5",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_5.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Canal mandibular",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_6",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_6.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Canal nutriente",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_7",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_7.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Canal mandibular",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Limite inferior do canal mandibular",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Limite superior do canal mandibular",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_8",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_8.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Canal mandibular",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Inf_9",
+      "regiao": "Pré-M-Inf.",
+      "src": "Site_Estudo/Pre_Molares_Inferiores/Pre_Inf_9.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Canal mandibular",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Base da mandíbula",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Sup_1",
+      "regiao": "Pré-M-Sup.",
+      "src": "Site_Estudo/Pre_Molares_Superiores/Pre_Sup_1.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Processo zigomático da maxila",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Sup_10",
+      "regiao": "Pré-M-Sup.",
+      "src": "Site_Estudo/Pre_Molares_Superiores/Pre_Sup_10.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Septo sinusal",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Canal nutriente",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Sup_2",
+      "regiao": "Pré-M-Sup.",
+      "src": "Site_Estudo/Pre_Molares_Superiores/Pre_Sup_2.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Septo sinusal",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Sup_3",
+      "regiao": "Pré-M-Sup.",
+      "src": "Site_Estudo/Pre_Molares_Superiores/Pre_Sup_3.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Túber",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Sup_4",
+      "regiao": "Pré-M-Sup.",
+      "src": "Site_Estudo/Pre_Molares_Superiores/Pre_Sup_4.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Sup_5",
+      "regiao": "Pré-M-Sup.",
+      "src": "Site_Estudo/Pre_Molares_Superiores/Pre_Sup_5.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Sup_6",
+      "regiao": "Pré-M-Sup.",
+      "src": "Site_Estudo/Pre_Molares_Superiores/Pre_Sup_6.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Sup_7",
+      "regiao": "Pré-M-Sup.",
+      "src": "Site_Estudo/Pre_Molares_Superiores/Pre_Sup_7.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Assoalho do seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Processo zigomático da maxila",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Sup_8",
+      "regiao": "Pré-M-Sup.",
+      "src": "Site_Estudo/Pre_Molares_Superiores/Pre_Sup_8.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Pre_Sup_9",
+      "regiao": "Pré-M-Sup.",
+      "src": "Site_Estudo/Pre_Molares_Superiores/Pre_Sup_9.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Seio maxilar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Processo zigomático da maxila",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Tecidos_1",
+      "regiao": "Estruturas Dent.",
+      "src": "Site_Estudo/Tecidos_e_Estruturas_Dentarias/Tecidos_1.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Crista Alveolar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Lamina Dura",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Esmalte",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Tecidos_2",
+      "regiao": "Estruturas Dent.",
+      "src": "Site_Estudo/Tecidos_e_Estruturas_Dentarias/Tecidos_2.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Dentina",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Canal Radicular",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Espaço Periodontal",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Tecidos_3",
+      "regiao": "Estruturas Dent.",
+      "src": "Site_Estudo/Tecidos_e_Estruturas_Dentarias/Tecidos_3.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Câmara Pulpar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Osso Alveolar",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Lamina Dura",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Tecidos_4",
+      "regiao": "Estruturas Dent.",
+      "src": "Site_Estudo/Tecidos_e_Estruturas_Dentarias/Tecidos_4.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Crista Alveolar",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Canal Radicular",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Espaço Periodontal",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Tecidos_5",
+      "regiao": "Estruturas Dent.",
+      "src": "Site_Estudo/Tecidos_e_Estruturas_Dentarias/Tecidos_5.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Esmalte",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Dentina",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "id": "Tecidos_6",
+      "regiao": "Estruturas Dent.",
+      "src": "Site_Estudo/Tecidos_e_Estruturas_Dentarias/Tecidos_6.png",
+      "labels": [
+        {
+          "letra": "a",
+          "canonical": "Esmalte",
+          "aliases": []
+        },
+        {
+          "letra": "b",
+          "canonical": "Camara Pulpar",
+          "aliases": []
+        },
+        {
+          "letra": "c",
+          "canonical": "Dentina Radicular",
+          "aliases": []
+        }
+      ]
+    }
+  ]
+}
