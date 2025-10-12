@@ -19,7 +19,7 @@ img, canvas, video { max-width: 100%; height: auto; display: block; }
 .progress > div { max-width: 100%; }
 
     :root{
-      --bg:#0f1115; --panel:#151923; --muted:#8a93a6; --text:#e7ecf2; --primary:#6aa0ff; --ok:#1bc47d; --err:#ff5d5d; --warn:#ffb020; --link:#93b7ff; --blue:#58a6ff;
+      --bg:#0f1115; --panel:#151923; --muted:#8a93a6; --text:#e7ecf2; --primary:#6aa0ff; --ok:#1bc47d; --err:#ff5d5d; --ok2:#1bc47d; --err2:#ff5d5d; --warn:#ffb020; --link:#93b7ff; --blue:#58a6ff;
       --card:#111522; --shadow:0 8px 24px rgba(0,0,0,.3);
       --border:rgba(255,255,255,.07);
       --input:#0e1320; --input-border:#222738;
@@ -1326,7 +1326,7 @@ function fitChartToRemaining(cv, { gap=50, min=220, max=null } = {}){
       const tags = document.createElement('div'); tags.className='tags';
       const okN = img.letters.filter(l=>l.isCorrect).length;
       const errN = img.letters.length - okN;
-      tags.innerHTML = `<span class="tag ok">✔ ${okN}</span><span class="tag err">✖ ${errN}</span>`;
+      tags.innerHTML = `<span class="tag ok2">✔ ${okN}</span><span class="tag err2">✖ ${errN}</span>`;
       head.appendChild(tags);
       div.appendChild(head);
 
