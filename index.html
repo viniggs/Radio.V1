@@ -1721,7 +1721,7 @@ const byImg = new Map();
   qs('#btnExport').onclick = exportHistory;
   qs('#btnImport').onclick = ()=> qs('#fileImport').click();
   qs('#fileImport').onchange = (e)=>{ if(e.target.files?.[0]) importHistory(e.target.files[0]); e.target.value=''; };
-  qs('#btnReset').onclick = ()=>{ if(confirm('Tem certeza que deseja apagar TODO o histórico local?')){ resetState(); alert('Histórico resetado.'); } };
+  qs('#btnReset').onclick = ()=>{ if(confirm('Tem certeza que deseja apagar TODO o histórico local?')){ resetState(); alert('Histórico resetado.'); location.reload(); } };
   qs('#btnExportCSV').onclick = exportCSVSession;
 
   // dataset import/reset
