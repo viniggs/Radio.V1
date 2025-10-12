@@ -2219,7 +2219,10 @@ const byImg = new Map();
     try{ if(typeof renderHome==='function') renderHome(); }catch(e){}
     try{ if(typeof renderStats==='function') renderStats(); }catch(e){}
     try{ if(typeof onDatasetLoaded==='function') onDatasetLoaded(ds); }catch(e){}
-    location.reload();
+    if (!sessionStorage.getItem('__reloaded_after_dataset')) {
+      sessionStorage.setItem('__reloaded_after_dataset', '1');
+      setTimeout(() => location.reload(), 50); // pequeno delay p/ gravar o flag
+  }
   }
 
   async function loadDatasetAuto(){
