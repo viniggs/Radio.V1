@@ -78,6 +78,7 @@ img, canvas, video { max-width: 100%; height: auto; display: block; }
     .warn{background:linear-gradient(180deg,#ffb347,#e89a29);border-color:#c57d18}
     .pill{display:inline-block;padding:4px 10px;border:1px solid var(--input-border);border-radius:999px;background:#141a2b;color:var(--muted);font-size:12px}
     .muted{color:var(--muted)}
+    .muted2{color:var(--muted)}
     .hidden{display:none !important}
     .section{padding:18px}
     .grid{display:grid;gap:16px}
@@ -1334,7 +1335,7 @@ function fitChartToRemaining(cv, { gap=50, min=220, max=null } = {}){
       img.letters.forEach(l=>{
         const line = document.createElement('div');
         const cls = l.isCorrect? 'ok' : (l.isBlank? 'blank' : 'err');
-        let html = `<span class="letter ${cls}" style="${cls==='ok'?'color:var(--ok);border-color:var(--ok);background:transparent;':(cls==='err'?'color:var(--err);border-color:var(--err);background:transparent;':'color:#ff9c9c;border-color:#ff9c9c;background:transparent;')}" style="margin-right:8px">${l.letra}</span> <span class="resp ${cls}">${l.isBlank? '(em branco)': escapeHtml(l.answered)}</span>`;
+        let html = `<span class="letter ${cls}" style="${cls==='ok'?'color:var(--ok);border-color:var(--ok);background:transparent;':(cls==='err'?'color:var(--err);border-color:var(--err);background:transparent;':'color:#ff9c9c;border-color:#ff9c9c;background:transparent;')}" style="margin-right:3px">${l.letra}</span> <span class="resp ${cls}">${l.isBlank? '(em branco)': escapeHtml(l.answered)}</span>`;
         if(!l.isCorrect){ html += ` · <span class="gabarito">${escapeHtml(l.canonical)}</span>`; }
         line.innerHTML = html; body.appendChild(line);
       });
@@ -1638,12 +1639,12 @@ const byImg = new Map();
         const v = g.letters[L];
         const row = document.createElement('div'); row.className='alternativas'; row.style.display='flex'; row.style.justifyContent='space-between'; row.style.gap='8px'; row.style.padding='4px 0';
         row.innerHTML = `<div>
-                          <span class="letter" style="margin-right:8px">${L}</span> 
-                          <span>Tent.:</span> 
-                          <b>${v.attempts}</b> · 
-                          <span class="muted">✔:</span> 
-                          <b style="color:var(--ok)">${v.ok}</b> · 
-                          <span class="muted">✖:</span> 
+                          <span class="letter" style="margin-right:3px">${L}</span> 
+                          <span class="muted2">Tent.:</span> 
+                          <b>${v.attempts}</b> 
+                          <span class="muted">• ✔:</span> 
+                          <b style="color:var(--ok)">${v.ok}</b> 
+                          <span class="muted">• ✖:</span> 
                           <b style="color:var(--err)">${v.wrong}</b>
                         </div>`+
                         `<div class="muted">Acertos: 
