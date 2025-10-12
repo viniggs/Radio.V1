@@ -2219,6 +2219,7 @@ const byImg = new Map();
     try{ if(typeof renderHome==='function') renderHome(); }catch(e){}
     try{ if(typeof renderStats==='function') renderStats(); }catch(e){}
     try{ if(typeof onDatasetLoaded==='function') onDatasetLoaded(ds); }catch(e){}
+    location.reload();
   }
 
   async function loadDatasetAuto(){
@@ -2230,7 +2231,6 @@ const byImg = new Map();
       const ds = await res.json();
       await applyDataset(ds);
       console.log('[AutoDataset] carregado de', DATASET_URL);
-      location.reload();
     }catch(err){
       console.warn('[AutoDataset] não conseguiu buscar via fetch:', err && err.message);
       if(isFile){
