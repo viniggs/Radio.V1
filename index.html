@@ -415,7 +415,9 @@ input[type="text"], input[type="number"], select, button {
 
 
 
-.report-body > .letter{margin-top: 10px}
+.report-body > .letter.ok2{margin-top: 10px}
+.report-body > .letter.err{margin-top: 10px}
+.report-body > .letter.blank{margin-top: 10px}
 
 
 
@@ -1336,8 +1338,8 @@ function fitChartToRemaining(cv, { gap=50, min=220, max=null } = {}){
       img.letters.sort((a,b)=>a.letra.localeCompare(b.letra,'pt'));
       img.letters.forEach(l=>{
         const line = document.createElement('div');
-        const cls = l.isCorrect? 'ok' : (l.isBlank? 'blank' : 'err');
-        let html = `<span class="letter ${cls}" style="${cls==='ok'?'color:var(--ok);border-color:var(--ok);background:transparent;':(cls==='err'?'color:var(--err);border-color:var(--err);background:transparent;':'color:#ff9c9c;border-color:#ff9c9c;background:transparent;')}" style="margin-right:3px">${l.letra}</span> <span class="resp ${cls}">${l.isBlank? '(em branco)': escapeHtml(l.answered)}</span>`;
+        const cls = l.isCorrect? 'ok2' : (l.isBlank? 'blank' : 'err');
+        let html = `<span class="letter ${cls}" style="${cls==='ok2'?'color:var(--ok2);border-color:var(--ok2);background:transparent;':(cls==='err'?'color:var(--err);border-color:var(--err);background:transparent;':'color:#ff9c9c;border-color:#ff9c9c;background:transparent;')}" style="margin-right:3px">${l.letra}</span> <span class="resp ${cls}">${l.isBlank? '(em branco)': escapeHtml(l.answered)}</span>`;
         if(!l.isCorrect){ html += ` · <span class="gabarito">${escapeHtml(l.canonical)}</span>`; }
         line.innerHTML = html; body.appendChild(line);
       });
