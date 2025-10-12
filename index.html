@@ -1,0 +1,2260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Treino de Radiologia Odontológica — Estruturas Anatômicas</title>
+  <style>
+
+/* Anti-overflow global (injetado) */
+html, body { max-width: 100%; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+.container, .panel, .section { width: 100%; max-width: 100%; }
+.grid, .stat-grid, .regions-grid, .images-grid, .questions-grid,
+.results-grid, .answers-grid, .answers-row,
+.history-item, .history-meta,
+.test-wrap, .imgbox, .image-box, .progress { min-width: 0; }
+img, canvas, video { max-width: 100%; height: auto; display: block; }
+.progress { width: 100%; }
+.progress > div { max-width: 100%; }
+
+    :root{
+      --bg:#0f1115; --panel:#151923; --muted:#8a93a6; --text:#e7ecf2; --primary:#6aa0ff; --ok:#1bc47d; --err:#ff5d5d; --warn:#ffb020; --link:#93b7ff; --blue:#58a6ff;
+      --card:#111522; --shadow:0 8px 24px rgba(0,0,0,.3);
+      --border:rgba(255,255,255,.07);
+      --input:#0e1320; --input-border:#222738;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:#0f1115;color:var(--text);font:500 16px system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;}
+    a{color:var(--link)}
+    /*.container{max-width:1200px;width:100%;margin:0 auto;padding:0 16px}*/
+    .container{max-width:1200px;width:100%;margin:0 auto;padding:10px 20px 20px}
+    .hero{display:flex;gap:18px;align-items:center;margin-bottom:22px}
+    .title{font-weight:800;letter-spacing:.3px;font-size: 40px}
+    .subtitle{color:var(--muted);font-size:14px}
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .row{display:flex;gap:18px}
+    .col{flex:1}
+    .btns{display:flex;flex-wrap:wrap;gap:12px}
+    button{font-size: 15px;background:#1a2236;border:1px solid var(--input-border);color:var(--text);padding:12px 16px;border-radius:12px;cursor:pointer;transition:.15s;box-shadow:var(--shadow);} 
+
+    /* CSS-GRÁFICOS */
+    .chart-grid{
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      align-items:stretch;
+    }
+    .chart-box{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px;
+    }
+    #home-charts canvas{
+      width:100% !important;
+      height:280px !important;  /* ajuste se quiser mais baixo/alto */
+    }
+    
+
+
+    /* Aumentar apenas os botões "Voltar" */
+    #btnPreBack,
+    #btnBeginReview,
+    #btnBegin,
+    #btnPreReviewBack,
+    #btnStatsBack {
+    font-size: 15px;      /* texto maior */
+    padding: 12px 25px;   /* caixa maior */
+    }
+
+    button:hover{transform:translateY(-1px);border-color:#2a3552}
+    button.primary{background:linear-gradient(180deg,#2a5bd9,#264eb9);border-color:#2650bd}
+    button.ghost{background:transparent;border-color:var(--border)}
+    .danger{background:linear-gradient(180deg,#be2b2b,#9a1e1e);border-color:#9a1e1e}
+    .ok{background:linear-gradient(180deg,#119b63,#0e8655);border-color:#0f8a58}
+    .warn{background:linear-gradient(180deg,#ffb347,#e89a29);border-color:#c57d18}
+    .pill{display:inline-block;padding:4px 10px;border:1px solid var(--input-border);border-radius:999px;background:#141a2b;color:var(--muted);font-size:12px}
+    .muted{color:var(--muted)}
+    .hidden{display:none !important}
+    .section{padding:18px}
+    .grid{display:grid;gap:16px}
+    .grid-2{grid-template-columns:1fr 1fr}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .field{display:flex;flex-direction:column;gap:8px}
+    label{font-size:13px;color:#white;}
+    input[type="text"], input[type="number"], select{background:var(--input);border:1px solid var(--input-border);color:var(--text);padding:12px 12px;border-radius:10px}
+    input[disabled]{opacity:.7}
+    .switch{display:flex;align-items:center;gap:10px}
+    .kbd{border:1px solid var(--input-border);border-bottom-color:#0b0e18;border-radius:6px;background:#0f1528;padding:2px 6px;font-size:12px;color:#c7d2ff}
+
+    /* TEST VIEW */
+    .test-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    .imgbox{background:#0c1020;border:1px solid var(--input-border);border-radius:var(--radius);padding:12px;display:flex;justify-content:center;align-items:center;min-height:380px;}
+    .imgbox img{max-width:100%;max-height:70vh;border-radius:12px;}
+    .inputs{background:var(--card);border:1px solid var(--input-border);border-radius:var(--radius);padding:16px}
+    .letter-row{display:grid;grid-template-columns:60px 1fr;align-items:center;margin-bottom:10px}
+    .letter{margin-left: 6px;font-weight:800;font-size:18px;background:#0e1426;border:2px solid var(--input-border);color:#bcd0ff;padding:8px 12px;border-radius:999px;display:inline-flex;justify-content:center;align-items:center;width:34px;height:34px}
+    .letter.ok{outline:1px var(--ok)}
+    .letter.err{outline:1px var(--err)}
+    .ans.ok{outline:2px solid var(--ok)}
+    .ans.err{outline:2px solid var(--err)}
+    .ans-note{font-size:12px;color:#ff9c9c;margin-left:62px;margin-top:-6px;margin-bottom:6px}
+    .ans-note.blank{color:#ffb0b0}
+
+    .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .progress{height:8px;background:#0b0f1d;border:1px solid var(--input-border);border-radius:10px;overflow:hidden}
+    .progress > div{height:100%;background:linear-gradient(90deg,#2d72ff,#24d2ff)}
+
+    .timer{font-variant-numeric:tabular-nums}
+
+    /* REPORT */
+    .report-item{border:1px solid var(--input-border);background:#0e1426;border-radius:14px;margin-bottom:16px;overflow:hidden}
+    .report-head{display:flex;gap:16px;align-items:center;padding:12px;border-bottom:1px solid var(--input-border)}
+    .report-head img{width:120px;height:80px;object-fit:cover;border-radius:10px;border:1px solid var(--input-border)}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .report-body{padding:12px}
+    .tag{padding:2px 8px;border-radius:999px;border:1px solid var(--input-border);background:#131a2c;color:#9fb1e7;font-size:12px}
+    .resp.ok{background: transparent;color: var(--ok) !important} /* report: keep only letter colored */
+    .resp.err{color: var(--err) !important} /* report: keep only letter colored */
+    .resp.blank{color:#ff9c9c}
+    .resp .gabarito{color:var(--blue)}
+    .letter.ok{ color: var(--ok); border-color: var(--ok); }
+    /* ensure color applies in report & review summaries */
+    .report-item .letter.ok{ color: var(--ok) !important; border-color: var(--ok) !important; }
+    .report-item .letter.err{ color: var(--err) !important; border-color: var(--err) !important; }
+    .report-item .letter.blank{ color: #ff9c9c !important; border-color: #ff9c9c !important; }
+    /* ensure letter background is not filled in report; color only the glyph and border */
+    .report-item .letter.ok,
+    .review-item .letter.ok{ background: transparent !important; color: var(--ok) !important; border-color: var(--ok) !important; }
+    .report-item .letter.err,
+    .review-item .letter.err{ background: transparent !important; color: var(--err) !important; border-color: var(--err) !important; }
+    
+    
+    .letter.err{ color: var(--err); border-color: var(--err); }
+    .letter.blank{ color: #ff9c9c; border-color: #ff9c9c; }
+    .tag.ok{ color: var(--ok); border-color: var(--ok); }
+    .tag.err{ color: var(--err); border-color: var(--err); }
+
+
+    /* STATS */
+    .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+/* Regions stats grid */
+#statsSummary .regions-grid{grid-template-columns: repeat(auto-fit,minmax(400px,1fr));}
+
+    .stat-card{background:#0f1629;border:1px solid var(--input-border);border-radius:14px;padding:12px}
+    .rank-item{border:1px solid var(--input-border);border-radius:12px;padding:10px;background:#0e1426;margin-bottom:10px;margin-top: 10px;}
+    .rank-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .rank-body{margin-top:8px}
+    .mini-bar{display: flex;height:8px;background:#0b0f1d;border:1px solid var(--input-border);border-radius:9px;overflow:hidden}
+    .mini-bar > div{height:100%}
+
+    .mini-blank{background:#9aa0b6}
+  
+    /* Home: emphasize main buttons, de‑emphasize captions */
+    #home .grid-4 .field > button{
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+    #home .grid-3 .field > span.muted{
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    #test .grid-3 .field > button{
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    /* Modal base */
+    .modal.hidden{ display:none; }
+    .modal{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; z-index:9999; }
+    .modal-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.5); }
+    .modal-dialog{ position:relative; max-width:min(90vw, 760px); width:100%; border-radius:var(--radius); box-shadow:var(--shadow); background:var(--panel); padding:16px 18px; }
+
+    /* Esconde botões avançados na Home */
+    #home .btns #btnExport,
+    #home .btns #btnImport,
+    #home .btns #btnResetDataset,
+    #home .btns #btnRunTests{ display:none !important; }
+
+    /* Modal visibility guard via aria-hidden */
+    #advancedModal[aria-hidden="true"]{ display:none !important; }
+
+    /* Stats button: gentle green tone */
+    #btnStats{
+      background: linear-gradient(180deg, #75d8a8, #59c596);
+      border-color: #45b285;
+      color: #0d2018;
+    }
+
+    /* Stats button: vivid green + white text */
+    #btnStats{
+      background: linear-gradient(180deg, #2fc27e, #1ea765);
+      border-color: #178a53;
+      color: #ffffff;
+    }
+
+    /* Importar imagens: usar o mesmo verde do botão Estatísticas */
+    #btnImportDataset{
+      background: linear-gradient(180deg, #2fc27e, #1ea765);
+      border-color: #178a53;
+      color: #ffffff;
+    }
+
+    /* Mini revisão (Estatísticas) */
+    .mini-review{ background: linear-gradient(180deg, #ffcc5a, #e6a93a); border-color:#c4871f; color:#121416; font-weight:700; }
+    .mini-review:hover{ transform: translateY(-1px); }
+    #miniModal .imgbox{ min-height:280px; }
+    #miniModal .letter-row{ grid-template-columns:48px 1fr; }
+    #miniModal .letter{ width:40px; }
+    #miniModal .modal-body{ display:grid; grid-template-columns:1.1fr .9fr; gap:14px; }
+
+    #miniModal .gabarito{ color: var(--blue); display:block; margin:2px 0 10px 0; text-align:center; grid-column: 2 / 3; }
+
+/* === Stats: single row per section (wide screens) === */
+#statsSummary > .stat-grid:nth-of-type(1){ /* por questões (4 cards) */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+#statsSummary > .stat-grid:nth-of-type(2){ /* por imagens (3 cards) */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Responsivo: quebra em 2 colunas e depois 1 */
+
+
+
+/* Corrige layout: #statsSummary não deve ser grid */
+#statsSummary{ display:block !important; }
+
+
+.titulo-item{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+}
+.titulo-item > .muted{ justify-self: end; } /* right-side metrics */
+
+/* === Align mini-review button centered in rank header regardless of left/right widths === */
+.rank-head{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 10px;
+}
+.rank-head > .rank-actions{ justify-self: end; }
+.mini-err{ justify-self: end; }
+
+
+/* --- Spacing between stats sections (questions, images, regions) --- */
+#statsSummary > h4{
+  margin: 22px 0 12px !important;  /* more top/bottom space for section titles */
+}
+#statsSummary > .stat-grid{
+  margin-bottom: 22px;             /* space after each grid block */
+}
+
+
+
+/* Center title on the hero header */
+.hero{ justify-content:center; }
+.hero > div:last-child{ display:none; } /* remove spacer */
+.title{ text-align:center; display:block; margin:0 auto; }
+
+
+    /* History list styles */
+    .history-item{border:1px solid var(--input-border);border-radius:12px;padding:10px;background:#0e1426;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .history-meta{display:flex;flex-direction:column;gap:4px}
+    .badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid var(--input-border);background:#131a2c;color:#9fb1e7;font-size:12px}
+
+
+
+
+/* ===== Layout Mobile (até ~768px) ===== */
+@media (max-width: 768px){
+
+  /* Container margins menores no mobile */
+  .container{ margin: 6px 12px 12px; padding: 16px 12px; }
+  #miniModal .modal-body{ grid-template-columns:1fr; }
+  /* Painéis e títulos */
+  .panel { padding: 12px; border-radius: 12px; }
+  .text { font-size: 16px; }
+  .title{ font-size: clamp(22px, 6vw, 30px); text-align:center; }
+
+  /* Home: 4 botões em 2x2 (responsivo) */
+  .grid.grid-4{
+    display:grid;
+    grid-template-columns: 1fr 1fr !important;
+    gap:12px;
+  }
+  /* legenda dos botões menor no mobile */
+  #home .grid-4 .field > span.muted{ font-size: 12px; }
+
+  /* Botões: área de toque confortável */
+  button,
+  .grid .field button,
+  .primary, .ghost, .ok, .warn, .danger{
+    font-size: 14px;
+    padding: 12px 14px;
+    min-height: 44px;
+    border-radius: 12px;
+  }
+
+  /* Inputs */
+  input[type="text"], input[type="number"], select{
+    font-size: 16px;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+
+  /* Teste: imagem em cima, respostas embaixo */
+  .imgbox{ min-height: 220px; }
+  .imgbox img{ max-height: 50vh; }
+  .letter-row{ grid-template-columns: 44px 1fr; gap:8px; }
+  .letter{ width:28px; height:28px; line-height:28px; font-size:15px; padding:6px 10px; }
+
+  /* Barra de progresso e ticks mais visíveis */
+  .progress{ height: 10px; border-width: 1px; }
+  .progress > div{ min-width: 2px; }
+
+  /* Seções de estatísticas/resultados em 1 coluna */
+  .stat-grid,
+  .regions-grid,
+  .images-grid,
+  .questions-grid{
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+  .stat-card{ padding: 10px; border-radius: 12px; }
+
+  /* Modais ocupam a tela inteira */
+  .modal-dialog{
+    max-width: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Histórico: itens ocupam largura toda */
+  .history-item{ padding: 10px; gap: 10px; }
+  .history-meta{ font-size: 14px; }
+  .badge{ font-size: 11px; }
+
+  /* Espaçamentos verticais entre seções */
+  #statsSummary > h4{ margin: 18px 0 10px !important; }
+  #statsSummary > .stat-grid{ margin-bottom: 18px !important; }
+
+  /* Gráficos na home (se usados): uma coluna e altura menor */
+  #home #home-charts .chart-grid{ grid-template-columns: 1fr !important; }
+  #home #home-charts canvas{ height: 220px !important; }
+}
+
+
+
+/* ==== Correções anti-overflow (mobile e geral) ==== */
+html, body { max-width: 100%; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+
+/* imagens/canvas nunca estouram a largura do contêiner */
+img, canvas, video { max-width: 100%; height: auto; display: block; }
+
+/* containers principais não “passam” de 100% */
+.container, .panel, .section { width: 100%; max-width: 100%; }
+
+/* grids/flex: permitir encolher conteúdo largo */
+.grid, .stat-grid, .regions-grid, .images-grid, .questions-grid,
+.results-grid, .answers-grid, .answers-row,
+.history-item, .history-meta,
+.test-wrap, .imgbox, .image-box, .progress {
+  min-width: 0; /* importantíssimo para evitar overflow em grid/flex */
+}
+
+/* inputs e botões ocupam a linha sem forçar overflow */
+input[type="text"], input[type="number"], select, button {
+  max-width: 100%;
+}
+
+/* textos longos (nomes de região, etc) podem quebrar linha */
+.muted, .text, .history-meta, .badge {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* imagens do teste e stats */
+.imgbox img, .image-box img {display: block; max-width: 100%; min-width:0 ;width: 100%; height: auto; object-fit: contain; }
+
+/* barra de progresso: garante que não some/estoure */
+.progress { width: 100%; }
+.progress > div { max-width: 100%; }
+
+/* Evitar “100vw” em elementos com padding/margem (causa barra lateral no mobile) */
+.full-bleed { width: 100%; max-width: 100%; }
+
+
+
+
+.test-wrap{
+  display:grid;
+  grid-template-columns: minmax(0,1.2fr) minmax(0,0.8fr); /* esq/dir */
+  gap:16px;
+}
+.test-wrap > .imgbox,
+.test-wrap > .inputs,
+.letter-row > .ans{
+  min-width:0; /* permite encolher dentro do grid */
+}
+
+
+
+
+
+
+
+
+/* === Hard-stop anti-overflow & mobile fit === */
+html, body { max-width: 100%; overflow-x: hidden; }
+.container, .panel, .section, .chart-card { width: 100%; max-width: 100%; box-sizing: border-box; }
+#home .grid.grid-4{ grid-template-columns: repeat(4, minmax(0,1fr)); }
+@media (max-width: 1169px){
+  #home .grid.grid-4{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 1100px){
+  .chart-grid{ grid-template-columns:1fr; }
+}
+@media (max-width: 980px){
+  .grid-2,.grid-3{grid-template-columns:1fr}
+}
+@media (max-width: 900px){
+  #statsSummary > .stat-grid:nth-of-type(1),
+  #statsSummary > .stat-grid:nth-of-type(2){
+  grid-template-columns: repeat(2, minmax(0, 1fr));}
+  #statsSummary > h4{ margin: 18px 0 10px !important; }
+  #statsSummary > .stat-grid{ margin-bottom: 18px; }
+}
+@Media (max-width: 877px){
+.test-wrap{ grid-template-columns: 1fr !important; }
+}
+@media (max-width: 768px){
+  .container{ margin: 0 auto !important; padding: 7px 16px 16px !important; }
+  .panel{ width: 100% !important; }
+  .grid.grid-4 { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .answers-row { grid-template-columns: 1fr; }
+  .answers-row .answer-item { grid-template-columns: auto 1fr; min-width: 0; }
+  .test-wrap{ grid-template-columns:1fr; }
+  #home .grid.grid-4{ grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+}
+@media (max-width: 600px){
+  #statsSummary > .stat-grid:nth-of-type(1),
+  #statsSummary > .stat-grid:nth-of-type(2){grid-template-columns: 1fr;}
+}
+@media (max-width: 575px){
+  #home .grid.grid-4{ grid-template-columns: 1fr !important; }
+  .titulo-item{grid-template-columns:1fr}
+  .titulo-item > .muted{ justify-self: initial;}
+  .titulo-item > .muted{margin-bottom: 13px;}
+}
+@media (max-width: 566px){
+  .grid.grid-4{ grid-template-columns: 1fr !important; }
+  .letter{ width:26px; height:26px; font-size:14px; }
+}
+@media(max-width: 470px){
+  .titulo-item > .muted{ justify-self: initial;}
+  .titulo-item > .muted{margin-bottom: 13px;}
+  .alternativas > .muted{display: none !important;}
+}
+@media(max-width: 394px){
+  .rank-head{grid-template-columns:1fr}
+  .rank-head > .rank-actions{ justify-self: initial; }
+  .mini-review{margin-bottom: 6px;}
+}
+/* ==== Print styles for Results PDF ==== */
+@media print{
+  *{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .no-print{ display:none !important; }
+  .container{ margin: 0; padding: 0 14px; }
+  #report.panel{ border:none; box-shadow:none; }
+}
+
+/* margin parity fix */
+.panel{overflow:hidden}
+/* Ensure canvases and images never exceed the panel */
+canvas, img, video{ max-width: 100% !important; height: auto; }
+
+.is-hidden{ display:none !important; }
+
+/* 1) Modal com rolagem interna e altura limitada à viewport */
+.modal{
+  position: fixed;
+  inset: 0;
+  padding: 16px;
+  display: grid;
+  place-items: center;     /* centraliza a dialog */
+  overflow: auto;          /* rolagem geral se a dialog for maior */
+  z-index: 9999;
+}
+.modal .modal-dialog{
+  width: 100%;
+  max-width: 900px;        /* ou o teu valor */
+  max-height: calc(100dvh - 32px);
+  display: flex;
+  flex-direction: column;  /* header em cima, body rola */
+}
+.modal .modal-body{
+  overflow: auto;          /* <- rolagem só no corpo da modal */
+}
+
+/* 2) Mini-modal: grid seguro (sem “estouro” horizontal) */
+#miniModal .modal-body{
+  display: grid;
+  grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr);
+  gap: 14px;
+}
+
+/* 3) Itens do grid podem encolher (importantíssimo no mobile) */
+#miniModal .imgbox,
+#miniModal .inputs{
+  min-width: 0;            /* evita overflow lateral */
+}
+
+/* 4) Imagem nunca estoura o contêiner */
+#miniModal .imgbox img{
+  max-width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* 5) Mobile: uma coluna e tudo rola bonitinho */
+@media (max-width: 768px){
+  #miniModal .modal-body{
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+
+  <style>
+    /* Auto-fit chart to width and give it a controlled dynamic height */
+    .chart-box{ width:100%; }
+    .chart-box canvas{ display:block; width:100% !important; }
+  </style>
+
+
+<script>
+// Ajusta a altura do gráfico para ocupar o restante da janela, descontando o que já está acima dele.
+function fitChartToRemaining(cv, { gap=50, min=220, max=null } = {}){
+  if(!cv) return;
+  // Posição do topo do canvas em relação ao topo da janela visível
+  const rectTop = cv.getBoundingClientRect().top;
+  // Altura disponível a partir desse ponto até o final da janela
+  let h = window.innerHeight - rectTop - gap;
+  if (min != null) h = Math.max(h, min);
+  if (max != null) h = Math.min(h, max);
+  cv.style.height = h + 'px';
+}
+</script>
+
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <div class="container">
+
+    <!-- TELA INICIAL -->
+    <div id="datasetAutoError" class="muted" style="display:none;margin:8px 0 0 12px;color:#c24141;">Falha ao carregar o dataset padrão. Verifique o caminho do JSON ou sirva o site por HTTP.</div>
+    <section id="home" class="panel section">
+      <div class="hero">
+        <div>
+          <div class="title">Treino de Radiologia</div>
+        </div>
+        <div style="flex:1"></div>
+      </div>
+      <div class="grid grid-4">
+        <div class="field">
+          <button id="btnStart" class="primary">Iniciar Teste</button>
+        </div>
+        <div class="field">
+          <button id="btnReviewAccum" class="warn">Revisão de Erros</button>
+        </div>
+        <div class="field">
+          <button id="btnStats" class="ghost">Personalizadas</button>
+        </div>
+        <div class="field">
+          <button id="btnHistory" class="button">Resultados Anteriores</button>
+        </div>
+
+      </div>
+      <hr style="border-color:var(--border);margin:16px 0 18px"/>
+      <div class="btns">
+        <button id="btnExport" class="">Exportar histórico (JSON)</button>
+        <button id="btnImport" class="">Importar histórico (JSON)</button>
+        <button id="btnImportDataset" class="hidden">Importar imagens</button>
+        <button id="btnReset" class="danger">Resetar histórico</button>
+        <button id="btnAdvanced" class="hidden" type="button" onclick="advOpen()">Configurações Avançadas</button>
+        <button id="btnResetDataset" class="ghost">Restaurar dataset padrão</button>
+        <button id="btnRunTests" class="ghost">Auto‑teste (dev)</button>
+      </div>
+      <input id="fileImport" type="file" accept="application/json" class="hidden"/>
+      <input id="fileDataset" type="file" accept="application/json" class="hidden"/>
+
+      <hr style="border-color:var(--border);margin:16px 0 18px"/>
+
+      <!-- GRÁFICOS -->
+      <h3 class="text" style="margin-left: 20px;">Percentual de acertos por região</h3>
+      <div class="chart-box">
+        <canvas id="chAccByRegion"></canvas>
+      </div>
+
+    </section>
+
+    <!-- PRÉ-TESTE -->
+    <section id="pretest" class="panel section hidden">
+      <h3 style="margin-top:0">Configurar teste</h3>
+      <div class="grid grid-1">
+        <div class="field">
+          <label>Regiões no teste</label>
+          <div id="selRegionsBox" class="grid grid-1"></div>
+        </div>
+        <hr style="border-color:var(--border);margin:16px 0 18px"/>
+        <div class="field">
+          <label>Cronômetro por imagem</label>
+          <div class="switch">
+            <input id="chkTimer" type="checkbox"/> <span>Ativar</span>
+            <input id="numTimer" type="number" min="5" max="600" step="5" value="60" style="width:110px;margin-left:12px" disabled/> <span>seg</span>
+          </div>
+        </div>
+        <hr style="border-color:var(--border);margin:16px 0 18px"/>
+        <div class="hidden">
+          <label>Correção</label>
+          <div class="switch"><input id="chkStrict" type="checkbox"/> <span>Modo estrito (palavra canônica)</span></div>
+          <div class="muted" style="font-size:12px">No estrito: exige o termo canônico em PT (ignora acentos/maiúsculas). No tolerante: aceita sinônimos e pequenos typos.</div>
+        </div>
+      </div>
+      <div class="btns" style="margin-top:30px">
+        <button id="btnBegin" class="primary">Começar</button>
+        <button id="btnPreBack" class="">Voltar</button>
+      </div>
+    </section>
+
+    <!-- PRÉ-REVISÃO (configurar revisão de erros) -->
+    <section id="prereview" class="panel section hidden">
+      <h3 style="margin-top:0">Configurar revisão de erros <span id="lblReviewKind" class="hidden" style="font-weight:400">(Acumulado)</span></h3>
+      <hr style="border-color:var(--border);margin:16px 0 16px"/>
+      <div class="grid grid-1" style="position: relative">
+        <div class="field">
+          <label>Regiões na revisão</label>
+          <div id="selRegionsReviewBox" class="grid grid-1"></div>
+        </div>
+        <hr style="border-color:var(--border);margin:16px 0 16px"/>
+        <div class="field">
+          <label>Cronômetro por imagem</label>
+          <div class="switch">
+            <input id="chkTimerReview" type="checkbox"/> <span>Ativar</span>
+            <input id="numTimerReview" type="number" min="5" max="600" step="5" value="60" style="width:110px;margin-left:12px" disabled/> <span>seg</span>
+          </div>
+        </div>
+        <hr style="border-color:var(--border);margin:16px 0 16px"/>
+        <div class="hidden">
+          <label>Correção</label>
+          <div class="switch"><input id="chkStrictReview" type="checkbox"/> <span>Modo estrito (palavra canônica)</span></div>
+          <div class="muted" style="font-size:12px">No estrito: exige o termo canônico em PT (ignora acentos/maiúsculas). No tolerante: aceita sinônimos e pequenos typos.</div>
+        </div>
+      </div>
+      <div class="btns" style="margin-top:30px">
+        <button id="btnBeginReview" class="primary"><span>Começar revisão</span></button>
+        <button id="btnPreReviewBack" class="">Voltar</button>
+      </div>
+    </section>
+
+    <!-- TESTE -->
+    <section id="test" class="panel section hidden">
+      <div class="topbar">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span id="lblProgress" class="pill">Imagem 1/1</span>
+          <span id="lblMode" class="hidden">Tolerante</span>
+          <span id="lblRegion" class="pill">Regiões: —</span>
+          <span id="lblChecked" class="pill hidden">✔ conferida</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div id="timerWrap" class="pill timer hidden">⏱ <span id="lblTimer">00:00</span></div>
+        </div>
+      </div>
+      <div class="progress" aria-hidden="true"><div id="bar" style="width:0%"></div></div>
+
+      <div class="test-wrap" style="margin-top:12px">
+        <div class="imgbox"><img id="testImg" alt="Imagem do teste"/></div>
+        <div class="inputs">
+          <div id="lettersBox"></div>
+          <div class="muted" style="margin-top:6px;font-size:12px">Se não souber alguma resposta você pode confirmar mesmo com campos em branco, porém contará como erro.</div>
+          <div class="btns grid grid-3" style="margin-top:12px; align-items: center;">
+            <div class="field">
+              <button id="btnCheck" class="ok">Enviar respostas</button>
+            </div>
+            <div id="divNext" class="field" >
+              <button id="btnNext" class="primary" disabled>Próxima imagem</button>
+            </div>
+            <div class="field">
+              <button id="btnCancel" class="danger">Cancelar Teste</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATÓRIO FINAL -->
+    <section id="report" class="panel section hidden">
+      <h3 style="margin-top:0">Resultado do teste</h3>
+      <div id="reportSummary" class="stat-grid" style="margin-bottom:10px"></div>
+      <div class="btns" style="margin-bottom:14px">
+        <button onclick="window.print()" class="ok">Imprimir resultados (PDF)</button>
+        <button id="btnReviewSession" class="warn">Revisar erros desta sessão</button>
+        <button id="btnExportCSV" class="hidden">Exportar CSV (sessão)</button>
+        <button id="btnReportBack" class="primary">Voltar ao início</button>
+      </div>
+      <div id="reportList"></div>
+    </section>
+
+    <!-- ESTATÍSTICAS -->
+    <section id="stats" class="panel section hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h3 style="margin:0">Estatísticas</h3>
+        <button id="btnStatsBack" class="primary">Voltar</button>
+      </div>
+      <hr style="border-color:var(--border);margin:16px 0 18px"/>
+      <div class="grid grid-3" style="margin-top:10px">
+        <div class="field">
+          <label>Janela de tempo</label>
+          <select id="selWindow">
+            <option value="lifetime">Desde sempre</option>
+            <option value="last">Últimos (dias/horas)</option>
+            <option value="custom">Intervalo personalizado</option>
+          </select>
+        </div>
+        <div class="field" id="boxLast" style="display:none">
+          <label>Últimos(as)</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="numLast" type="number" min="1" value="30" style="width:120px"/>
+            <select id="selUnit"><option value="d" selected>dias</option><option value="h">horas</option></select>
+          </div>
+        </div>
+        <div class="field" id="boxCustom" style="display:none">
+          <label>Período personalizado</label>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <div>
+              <div class="muted" style="font-size:12px;margin-bottom:4px">Início</div>
+              <input id="dtStart" type="datetime-local"/>
+            </div>
+            <div>
+              <div class="muted" style="font-size:12px;margin-bottom:4px">Fim</div>
+              <input id="dtEnd" type="datetime-local"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-3" style="margin-top:10px">
+        <div class="field">
+          <label>Região</label>
+          <select id="selStatsRegion"><option value="__all__">Todas</option></select>
+        </div>
+        
+        <div class="field">
+          <label>Ordenar por</label>
+          <select id="selSort"><option value="errors">Quantidade de erros</option><option value="rate">Percentual de erros</option><option value="attempts">Tentativas</option></select>
+        </div>
+
+        <div class="field switch">
+          <span>Incluir respostas em branco</span><input id="chkBlanks" type="checkbox" checked/>
+        </div>
+      </div>
+
+      <hr style="border-color:var(--border);margin:16px 0 18px"/>
+      <div id="statsSummary" class="stat-grid" style="margin:14px 0"></div>
+      <hr style="border-color:var(--border);margin:16px 0 18px"/>
+      <h4 style="margin:6px 0 8px">Imagens com mais erros</h4>
+      <div id="rankList"></div>
+    </section>
+
+
+    <!-- HISTÓRICO DE TESTES -->
+    <section id="history" class="panel section hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h3 style="margin:0">Resultados Anteriores</h3>
+        <button id="btnHistoryBack" class="primary">Voltar</button>
+      </div>
+      <div class="muted" style="margin-top:6px;font-size:13px">Clique em um item para reabrir o relatório daquele teste.</div>
+      <hr style="border-color:var(--border);margin:12px 0 16px"/>
+      <div id="historyList"></div>
+    </section>
+
+  </div>
+
+  <script>
+
+  const DEFAULT_DATASET = {
+    version: "v1",
+    images: [
+      // === EXEMPLOS — apague e coloque os seus ===
+      {
+        id: "mx_molares_01",
+        regiao: "Molares Sup.",
+        src: "imagens/mx_molares_01.jpg",
+        labels: [
+          { letra:"a", canonical:"septo sinusal", aliases:["septo do seio maxilar","septo do seio"] },
+          { letra:"b", canonical:"assoalho do seio maxilar", aliases:["assoalho sinusal","assoalho do seio"] },
+          { letra:"c", canonical:"ápice radicular", aliases:["apice radicular","ápice da raiz","apice da raiz"] }
+        ]
+      },
+      {
+        id: "md_incisivos_01",
+        regiao: "Incisivos Inf.",
+        src: "imagens/md_incisivos_01.jpg",
+        labels: [
+          { letra:"a", canonical:"língua", aliases:["lingua"] },
+          { letra:"b", canonical:"sínfise mandibular", aliases:["sinfise mandibular","sínfise do mento"] },
+          { letra:"c", canonical:"forame lingual", aliases:["forame nutriente lingual"] }
+        ]
+      }
+      // ===========================================
+    ]
+  };
+  // Dataset ativo (pode ser sobrescrito por um JSON importado salvo no localStorage)
+  let DATASET = DEFAULT_DATASET;
+
+  /* =========================
+     Estado & Persistência
+  ==========================*/
+  const LS_KEY = "rxodonto_v1";
+  const REGIOES = [
+    "Incisivos Sup.","Incisivos Inf.",
+    "Caninos Sup.","Caninos Inf.",
+    "Pré-M-Sup.","Pré-M-Inf.",
+    "Estruturas Dent."
+  ];
+  let state = loadState();
+
+  // ==========================
+  //  Dataset externo (persistido)
+  // ==========================
+  const DS_KEY = "rxodonto_v1_dataset";
+
+  function validateDataset(obj){
+    if(!obj || typeof obj !== 'object') throw new Error('JSON inválido');
+    if(!Array.isArray(obj.images)) throw new Error('Campo "images" ausente');
+    for(const im of obj.images){
+      if(!im.id || !im.regiao || !im.src || !Array.isArray(im.labels)) throw new Error('Imagem inválida: campos obrigatórios ausentes');
+      const seen = new Set();
+      for(const lab of im.labels){
+        if(!lab || !lab.letra || !lab.canonical) throw new Error('Rótulo inválido em '+im.id);
+        if(seen.has(lab.letra)) throw new Error('Letra repetida na imagem '+im.id+': '+lab.letra);
+        seen.add(lab.letra);
+      }
+    }
+    return true;
+  }
+  function updateDatasetBadge(){
+    const el = qs('#dsBadge'); if(!el) return;
+    const n = DATASET?.images?.length || 0;
+    const v = DATASET?.version || 'sem versão';
+    const custom = !!localStorage.getItem(DS_KEY);
+    el.textContent = `Dataset: ${custom? 'custom': 'embutido'} • ${v} • ${n} imagens`;
+  }
+  function bootstrapDataset(){
+    try{
+      const raw = localStorage.getItem(DS_KEY);
+      if(raw){ const ds = JSON.parse(raw); validateDataset(ds); DATASET = ds; }
+    }catch(e){ console.warn('Falha ao carregar dataset salvo:', e); }
+    updateDatasetBadge();
+  }
+  function importDatasetFile(file){
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      try{
+        const ds = JSON.parse(reader.result);
+        validateDataset(ds);
+        localStorage.setItem(DS_KEY, JSON.stringify(ds));
+        DATASET = ds;
+        updateDatasetBadge();
+        hydrateRegions(); // atualizar listas
+        alert('Dataset importado com sucesso!');
+      }catch(e){ alert('Falha ao importar dataset: '+ (e.message||e)); }
+    };
+    reader.readAsText(file);
+  }
+  function resetDataset(){
+    localStorage.removeItem(DS_KEY);
+    DATASET = DEFAULT_DATASET;
+    updateDatasetBadge();
+    hydrateRegions();
+    alert('Dataset restaurado para o embutido.');
+  }
+
+  function loadState(){
+    try{
+      const raw = localStorage.getItem(LS_KEY);
+      if(!raw) return { cards:{}, attemptLog:[], sessions:[], lastSession:null, datasetVersion:DATASET.version };
+      const obj = JSON.parse(raw);
+      if(!obj.cards) obj.cards = {};
+      if(!obj.attemptLog) obj.attemptLog = [];
+      if(!obj.sessions) obj.sessions = [];
+      return obj;
+    }catch(e){
+      console.warn("Falha ao carregar estado, reiniciando.", e);
+      return { cards:{}, attemptLog:[], sessions:[], lastSession:null, datasetVersion:DATASET.version };
+    }
+  }
+  function saveState(){
+    localStorage.setItem(LS_KEY, JSON.stringify(state));
+  }
+  function resetState(){
+    state = { cards:{}, attemptLog:[], lastSession:null, datasetVersion:DATASET.version };
+    
+      saveState(); try{ renderStats(); }catch(e){}
+      // Atualiza estatísticas em tempo real (inclusive as de imagens)
+      (function(){ 
+        var s = document.getElementById('stats');
+        if(s && !s.classList.contains('hidden') && typeof renderStats==='function'){ renderStats(); }
+      })();
+
+  }
+
+  /* =========================
+     Utilidades
+  ==========================*/
+  const STOPWORDS = new Set(["o","a","os","as","um","uma","uns","umas","de","do","da","dos","das","no","na","nos","nas","ao","à","aos","às","d","e"]);
+
+  function normalize(str){
+    if(!str) return "";
+    return str
+      .toLowerCase()
+      .normalize('NFD').replace(/\p{Diacritic}+/gu,'')
+      .replace(/[.,;:!?\'\"()\[\]{}]/g,' ')
+      .replace(/-/g,' ')
+      .split(/\s+/).filter(t=>t && !STOPWORDS.has(t)).join(' ')
+      .trim();
+  }
+
+  function levenshtein(a,b){
+    a = a||""; b=b||"";
+    const m = a.length, n=b.length;
+    const dp = Array.from({length:m+1},()=>new Array(n+1));
+    for(let i=0;i<=m;i++) dp[i][0]=i;
+    for(let j=0;j<=n;j++) dp[0][j]=j;
+    for(let i=1;i<=m;i++){
+      for(let j=1;j<=n;j++){
+        const cost = a[i-1]===b[j-1]?0:1;
+        dp[i][j] = Math.min(
+          dp[i-1][j]+1,
+          dp[i][j-1]+1,
+          dp[i-1][j-1]+cost
+        );
+      }
+    }
+    return dp[m][n];
+  }
+
+  function tolerantMatch(answer, canonical, aliases){
+    const a = normalize(answer);
+    const cand = [canonical, ...(aliases||[])].map(normalize).filter(Boolean);
+    if(!a) return false;
+    for(const target of cand){
+      if(a===target) return true;
+      const d = levenshtein(a,target);
+      if((target.length<=7 && d<=1) || (target.length>7 && d<=2)) return true;
+    }
+    return false;
+  }
+
+  function normalizeStrict(str){
+    if(!str) return "";
+    let s = str.normalize('NFD').split('').filter(ch => ch.charCodeAt(0) < 0x300 || ch.charCodeAt(0) > 0x036F).join('');
+    s = s.toLowerCase().trim();
+    while(s.indexOf('  ') !== -1){ s = s.replace('  ',' '); }
+    return s;
+  }
+  function strictMatch(answer, canonical){
+    const a = normalizeStrict(answer);
+    const c = normalizeStrict(canonical);
+    return a && (a===c);
+  }
+
+  function shuffle(arr){
+    const a = arr.slice();
+    for(let i=a.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [a[i],a[j]]=[a[j],a[i]];
+    }
+    return a;
+  }
+
+  function formatTime(ms){
+    if(ms<0) ms=0;
+    const s = Math.floor(ms/1000);
+    const mm = String(Math.floor(s/60)).padStart(2,'0');
+    const ss = String(s%60).padStart(2,'0');
+    return `${mm}:${ss}`;
+  }
+
+  function now(){ return Date.now(); }
+
+  /* =========================
+     Construção de UI básica
+  ==========================*/
+  const qs = s=>document.querySelector(s);
+  const qsa = s=>Array.from(document.querySelectorAll(s));
+  function show(id){
+    ['#home','#pretest','#prereview','#test','#report','#stats','#history'].forEach(sel=>{ const el = qs(sel); if(el) el.classList.add('hidden'); });
+    const target = qs(id); if(target) target.classList.remove('hidden');
+  }
+
+  function hydrateRegions(){
+    // Pré-teste (teste normal)
+    const box = qs('#selRegionsBox');
+    if(box){
+      box.innerHTML = REGIOES.map(r=>`
+        <label style="display:flex;align-items:center;gap:8px">
+          <input class="region-check" type="checkbox" value="${r}">
+          <span>${r}</span>
+        </label>
+      `).join('');
+      box.querySelectorAll('.region-check').forEach(ch=> ch.checked = true);
+    }
+    // Estatísticas
+    const selStats = qs('#selStatsRegion');
+    if(selStats){
+      selStats.innerHTML = '<option value="__all__">Todas</option>' + REGIOES.map(r=>`<option>${r}</option>`).join('');
+    }
+  }
+
+  function renderReviewRegionChoices(list){
+    const box = qs('#selRegionsReviewBox');
+    if(!box) return;
+    const arr = Array.from(new Set(list));
+    box.innerHTML = arr.map(r=>`
+      <label style="display:flex;align-items:center;gap:8px">
+        <input class="region-check" type="checkbox" value="${r}" checked>
+        <span>${r}</span>
+      </label>
+    `).join('');
+  }
+
+  function getSelectedRegions(containerSel){
+    const root = containerSel ? qs(containerSel) : document;
+    if(!root) return [];
+    const checks = Array.from(root.querySelectorAll('.region-check'));
+    return checks.filter(c=>c.checked).map(c=>c.value);
+  }
+
+  /* =========================
+     Fluxo de Teste
+  ==========================*/
+  let session = null; // dados da sessão atual
+  let deckImages = []; // lista de imagens deste teste
+  let idx = 0;         // índice da imagem atual
+  let corrected = false; // se a imagem atual já foi conferida
+  let timer = null; let deadline=0; // cronômetro
+
+  function startPreTest(){
+    hydrateRegions();
+    qs('#chkTimer').checked = false; qs('#numTimer').disabled = true; qs('#numTimer').value = 60;
+    qs('#chkStrict').checked = false;
+    show('#pretest');
+  }
+
+  // Pré-revisão (config)
+  function openPreReview(kind, from){
+    window._reviewKind = kind; // 'accum' | 'session'
+    window._reviewFrom = from || 'home';
+    window._reviewSourceSession = (from === 'report') ? (window.sess || window._reportSession || null) : null;
+    // Timer defaults
+    const sess = (state.sessions||[]).slice().sort((a,b)=> (b.startedAt||0) - (a.startedAt||0));
+    const chkT = qs('#chkTimerReview'); const numT = qs('#numTimerReview');
+    if(chkT){ chkT.checked = false; }
+    if(numT){ numT.disabled = true; numT.value = 60; }
+    // Strict default
+    qs('#chkStrictReview').checked = false;
+    // Regiões disponíveis
+    let available = REGIOES;
+    if(kind==='session'){
+
+      const sourceSession = (window._reviewFrom === 'report' && window._reviewSourceSession)
+      ? window._reviewSourceSession
+      : (state.lastSession || null);
+
+      /*const items = (sess && sess.items) ? sess.items : (state.lastSession?.items || []);*/
+      const items = Array.isArray(sourceSession?.items) ? sourceSession.items : [];
+      const tested = Array.from(new Set(items.map(i=> i.regiao))).filter(Boolean);
+      available = tested.length? tested : [];
+    }
+    renderReviewRegionChoices(available);
+
+    qs('#lblReviewKind').textContent = (kind==='session') ? '(Desta sessão)' : '(Acumulado)';
+    show('#prereview');
+  }
+
+  function beginTest(kind, options){
+    // kind: 'normal' | 'reviewSession' | 'reviewAccum'
+    const timerOn = options?.timerOn ?? qs('#chkTimer').checked;
+    const sec = options?.seconds ?? parseInt(qs('#numTimer').value||'60',10);
+    const strict = options?.strict ?? qs('#chkStrict').checked;
+
+    // regiões selecionadas
+    let regions = options?.regions ?? getSelectedRegions();
+    if(kind==='normal'){
+      if(!regions || regions.length===0){
+        alert('Selecione pelo menos uma região para iniciar o teste.');
+        return;
+      }
+    } else {
+      if(!regions) regions = []; // revisão: vazio = todas
+    }
+
+    // construir deck
+    let images = DATASET.images.slice();
+    if(kind==='reviewSession'){
+      const baseItems = (window._reviewFrom==='report' && window._reviewSourceSession && Array.isArray(window._reviewSourceSession.items))
+        ? window._reviewSourceSession.items
+        : (state.lastSession?.items || []);
+      const wrongCards = new Set(baseItems.filter(it=>!it.isCorrect).map(it=>`${it.imageId}|${it.letra}`));
+      const ids = new Set(Array.from(wrongCards).map(cid=>cid.split('|')[0]));
+      images = images.filter(img=>ids.has(img.id));
+    } else if(kind==='reviewAccum'){
+      const pending = new Set(Object.keys(state.cards).filter(cid=>{
+        const c = state.cards[cid];
+        return c && c.everWrong && (c.streak||0) < 3;
+      }).map(cid=>cid.split('|')[0]));
+      images = images.filter(img=>pending.has(img.id));
+    }
+
+    if(regions.length>0){
+      images = images.filter(i=> regions.includes(i.regiao));
+    }
+
+    // embaralhar ordem das imagens (letras ficam em ordem)
+    images = shuffle(images);
+
+    deckImages = images;
+    idx = 0; corrected=false;
+    session = { id: `S${Date.now()}`, startedAt: now(), kind, settings:{ regions, timerOn, seconds:sec, strict } };
+
+    // UI de teste
+    qs('#lblMode').textContent = strict? 'Estrito' : 'Tolerante';
+    const regionLabel = (!regions || regions.length===0) ? 'Todas' : (regions.length<=3 ? regions.join(', ') : `${regions.length} selecionadas`);
+    qs('#lblRegion').textContent = 'Regiões: ' + regionLabel;
+    qs('#timerWrap').classList.toggle('hidden', !timerOn);
+    qs('#lblChecked').classList.add('hidden');
+    updateProgress();
+    show('#test');
+
+    if(deckImages.length===0){
+      alert('Nenhuma imagem encontrada para as regiões selecionadas.');
+      show('#home');
+      return;
+    }
+
+    renderCurrentImage();
+    if(timerOn) startTimer(sec);
+  }
+
+  function updateProgress(){
+    const N = deckImages.length; const i = Math.min(idx+1, N);
+    qs('#lblProgress').textContent = `Imagem ${i}/${N}`;
+    qs('#bar').style.width = `${(i-1)/N*100}%`;
+  }
+
+  function renderCurrentImage(){
+    const img = deckImages[idx];
+    qs('#testImg').src = img.src;
+    qs('#testImg').alt = `${img.regiao} — ${img.id}`;
+
+    const box = qs('#lettersBox'); box.innerHTML = '';
+    img.labels.forEach(lab=>{
+      const row = document.createElement('div'); row.className='letter-row';
+      const tag = document.createElement('div'); tag.className='letter'; tag.textContent = lab.letra;
+      const input = document.createElement('input'); input.type='text'; input.className='ans'; input.placeholder='Digite o nome da estrutura'; input.dataset.letra = lab.letra;
+      row.appendChild(tag); row.appendChild(input); box.appendChild(row);
+    });
+
+    corrected=false; qs('#btnNext').disabled = true; qs('#btnCheck').disabled = false; qs('#divNext').classList.add('is-hidden'); qs('#lblChecked').classList.add('hidden');
+    qsa('#lettersBox input.ans').forEach((el,idx)=>{ if(idx===0) el.focus(); el.disabled = false; el.classList.remove('ok','err');});
+    // remover notas
+    qsa('.ans-note').forEach(n=>n.remove());
+  }
+
+  function startTimer(sec){
+    clearInterval(timer);
+    deadline = now() + (sec*1000);
+    qs('#lblTimer').textContent = formatTime(sec*1000);
+    timer = setInterval(()=>{
+      const ms = deadline - now();
+      qs('#lblTimer').textContent = formatTime(ms);
+      if(ms<=0){
+        clearInterval(timer); timer=null; if(!corrected) confirmImage(true);
+      }
+    }, 200);
+  }
+
+  function confirmImage(fromTimer=false){
+    const img = deckImages[idx];
+    const strict = session.settings.strict;
+
+    const inputs = qsa('#lettersBox input.ans');
+    const results = [];
+
+    inputs.forEach(inp=>{
+      const letra = inp.dataset.letra;
+      const lab = img.labels.find(l=>l.letra===letra);
+      const answer = (inp.value||'').trim();
+      const isBlank = answer.length===0;
+      let ok=false;
+      if(!isBlank){
+        if(strict) ok = strictMatch(answer, lab.canonical);
+        else ok = tolerantMatch(answer, lab.canonical, lab.aliases||[]);
+      }
+      results.push({ imageId: img.id, regiao: img.regiao, letra, answered: answer, isBlank, isCorrect: ok, canonical: lab.canonical });
+
+      // pintar
+      inp.classList.remove('ok','err');
+      inp.classList.add(ok? 'ok' : 'err');
+      inp.disabled = true;
+    });
+
+    // salvar tentativas e atualizar stats por letra
+    applyResults(results);
+
+    corrected = true; qs('#btnNext').disabled = false; qs('#btnCheck').disabled = true; qs('#divNext').classList.remove('is-hidden'); qs('#lblChecked').classList.remove('hidden');
+    clearInterval(timer); timer=null;
+  }
+
+  function applyResults(results){
+    const ts = now();
+    for(const r of results){
+      const cid = `${r.imageId}|${r.letra}`;
+      if(!state.cards[cid]) state.cards[cid] = { attempts:0, correct:0, wrong:0, blank:0, streak:0, everWrong:false, lastSeen:0 };
+      const c = state.cards[cid];
+      c.attempts++;
+      if(r.isCorrect){ c.correct++; c.streak++; }
+      else { c.wrong++; if(r.isBlank) c.blank++; c.streak = 0; c.everWrong = true; }
+      c.lastSeen = ts;
+
+      // log de tentativa
+      state.attemptLog.push({ ts, sessionId:session.id, kind:session.kind, imageId:r.imageId, regiao:r.regiao, letra:r.letra, cardId:cid, mode: session.settings.strict? 'e':'t', timerOn: session.settings.timerOn, seconds: session.settings.seconds, answered: r.answered, isBlank: r.isBlank, isCorrect: r.isCorrect });
+    }
+    saveState();
+
+    // guardar para relatório da sessão
+    if(!state.lastSession || state.lastSession.id!==session.id){
+      state.lastSession = { id: session.id, startedAt: session.startedAt, settings: session.settings, items: [] };
+    }
+    state.lastSession.items.push(...results);
+    saveState();
+  }
+
+  function nextImage(){
+    if(!corrected){ alert('Conferir a imagem antes de avançar.'); return; }
+    idx++;
+    if(idx>=deckImages.length){
+      finishTest();
+    } else {
+      updateProgress();
+      renderCurrentImage();
+      if(session.settings.timerOn) startTimer(session.settings.seconds);
+    }
+  }
+
+  function cancelTest(){
+    if(confirm('Cancelar o teste atual? O progresso desta sessão não será perdido (fica no histórico).')){
+      clearInterval(timer); timer=null; show('#home');
+    }
+  }
+
+  function finishTest(){
+    // salva sessão no histórico
+    try{
+      const snap = JSON.parse(JSON.stringify(state.lastSession||{}));
+      snap.finishedAt = now();
+      if(snap && snap.items && snap.items.length){ state.sessions.push(snap); saveState(); }
+    }catch(e){ console.warn('Falha ao salvar sessão no histórico:', e); }
+
+    qs('#bar').style.width = '100%';
+    buildReport();
+    show('#report');
+  }
+
+  function buildReport(sess){
+  window.sess = sess;
+  window._reportSession = sess;
+
+    const items = (sess && sess.items) ? sess.items : (state.lastSession?.items || []);
+    if(items.length===0){ qs('#reportList').innerHTML = '<div class="muted">Sem dados desta sessão.</div>'; return; }
+
+    // Agregar por imagem
+    const byImg = {};
+    for(const it of items){
+      if(!byImg[it.imageId]) byImg[it.imageId] = { id: it.imageId, regiao: it.regiao, src: (DATASET.images.find(im=>im.id===it.imageId)||{}).src, letters: [] };
+      byImg[it.imageId].letters.push(it);
+    }
+
+    // resumo
+    const total = items.length;
+    const ok = items.filter(i=>i.isCorrect).length;
+    const wrong = total - ok;
+    const blanks = items.filter(i=>i.isBlank).length;
+    const pct    = total ? Math.round((ok/total)*100) : 0;
+    const summaryBox = qs('#reportSummary');
+    summaryBox.innerHTML = ''+
+      `<div class="stat-card"><div class="muted">Acertos</div><div style="font-size:28px;color:var(--ok)">${ok}</div></div>`+
+      `<div class="stat-card"><div class="muted">Erros</div><div style="font-size:28px;color:var(--err)">${wrong}</div></div>`+
+      `<div class="stat-card"><div class="muted">Em branco</div><div style="font-size:28px;color:#ff9c9c">${blanks}</div></div>`+
+      `<div class="stat-card"><div class="muted">Total de rótulos</div><div style="font-size:28px">${total}</div></div>`+
+      `<div class="stat-card"><div class="muted">Percentual de acertos</div><div style="font-size:28px">${pct}%</div></div>`;
+
+    // lista
+    const list = qs('#reportList'); list.innerHTML='';
+    Object.values(byImg).forEach(img=>{
+      const div = document.createElement('div'); div.className='report-item';
+      const head = document.createElement('div'); head.className='report-head';
+      const im = document.createElement('img'); im.src = img.src || ''; im.alt = img.id; head.appendChild(im);
+      const meta = document.createElement('div');
+      meta.innerHTML = `<div style="font-weight:700">${img.id}</div><div class="muted">${img.regiao}</div>`;
+      head.appendChild(meta);
+      const tags = document.createElement('div'); tags.className='tags';
+      const okN = img.letters.filter(l=>l.isCorrect).length;
+      const errN = img.letters.length - okN;
+      tags.innerHTML = `<span class="tag ok">✔ ${okN}</span><span class="tag err">✖ ${errN}</span>`;
+      head.appendChild(tags);
+      div.appendChild(head);
+
+      const body = document.createElement('div'); body.className='report-body';
+      img.letters.sort((a,b)=>a.letra.localeCompare(b.letra,'pt'));
+      img.letters.forEach(l=>{
+        const line = document.createElement('div');
+        const cls = l.isCorrect? 'ok' : (l.isBlank? 'blank' : 'err');
+        let html = `<span class="letter ${cls}" style="${cls==='ok'?'color:var(--ok);border-color:var(--ok);background:transparent;':(cls==='err'?'color:var(--err);border-color:var(--err);background:transparent;':'color:#ff9c9c;border-color:#ff9c9c;background:transparent;')}" style="margin-right:8px">${l.letra}</span> <span class="resp ${cls}">${l.isBlank? '(em branco)': escapeHtml(l.answered)}</span>`;
+        if(!l.isCorrect){ html += ` · <span class="gabarito">${escapeHtml(l.canonical)}</span>`; }
+        line.innerHTML = html; body.appendChild(line);
+      });
+      div.appendChild(body);
+
+      list.appendChild(div);
+    });
+  }
+
+  function escapeHtml(s){ return (s||'').replace(/[&<>\"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
+
+  function exportHistory(){
+    const payload = { exportedAt: new Date().toISOString(), datasetVersion: DATASET.version, cards: state.cards, attemptLog: state.attemptLog };
+    const blob = new Blob([JSON.stringify(payload,null,2)], {type:'application/json'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'radiologia_historico.json'; a.click(); URL.revokeObjectURL(a.href);
+  }
+
+  function importHistory(file){
+    const reader = new FileReader();
+    reader.onload = () => {
+      try{
+        const data = JSON.parse(reader.result);
+        if(!data.cards || !data.attemptLog){ alert('Arquivo inválido.'); return; }
+        state.cards = data.cards; state.attemptLog = data.attemptLog; saveState();
+        alert('Histórico importado com sucesso.');
+      }catch(e){ alert('Falha ao importar: '+e.message); }
+    };
+    reader.readAsText(file);
+  }
+
+  function exportCSVSession(){
+    const items = (sess && sess.items) ? sess.items : (state.lastSession?.items || []);
+    if(items.length===0){ alert('Sem dados desta sessão.'); return; }
+    const header = ['sessionId','timestamp','imageId','regiao','letra','answered','isBlank','isCorrect','canonical','mode','timerOn','seconds'];
+    const rows = items.map(it=>[
+      state.lastSession.id,
+      new Date(state.lastSession.startedAt).toISOString(),
+      it.imageId,
+      it.regiao,
+      it.letra,
+      (it.answered||'').replace(/\n/g,' '),
+      it.isBlank? '1':'0',
+      it.isCorrect? '1':'0',
+      it.canonical,
+      state.lastSession.settings.strict? 'estrito':'tolerante',
+      state.lastSession.settings.timerOn? '1':'0',
+      state.lastSession.settings.seconds
+    ]);
+    const csv = [header.join(','), ...rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(','))].join('\n');
+    const blob = new Blob([csv], {type:'text/csv'});
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'sessao_radiologia.csv'; a.click(); URL.revokeObjectURL(a.href);
+  }
+
+  /* =========================
+     Estatísticas
+  ==========================*/
+  function computeWindow(){
+    const mode = qs('#selWindow').value;
+    if(mode==='lifetime') return { start: 0, end: Infinity };
+    if(mode==='last'){
+      const n = parseInt(qs('#numLast').value||'30',10);
+      const unit = qs('#selUnit').value; // h or d
+      const dur = (unit==='h'? n*3600e3 : n*24*3600e3);
+      return { start: now()-dur, end: Infinity };
+    }
+    // custom
+    const start = new Date(qs('#dtStart').value).getTime() || 0;
+    const end = new Date(qs('#dtEnd').value).getTime() || Infinity;
+    return { start, end };
+  }
+
+  function buildStats(){
+    hydrateRegions();
+    // controles
+    const selW = qs('#selWindow');
+    const boxLast = qs('#boxLast');
+    const boxCustom = qs('#boxCustom');
+    function toggleWin(){
+      const v = selW.value;
+      boxLast.style.display = v==='last'? 'block':'none';
+      boxCustom.style.display = v==='custom'? 'block':'none';
+    }
+    selW.onchange = ()=>{ toggleWin(); renderStats(); };
+    qs('#numLast').oninput = renderStats; qs('#selUnit').onchange = renderStats;
+    qs('#dtStart').onchange = renderStats; qs('#dtEnd').onchange = renderStats;
+    qs('#selStatsRegion').onchange = renderStats; qs('#chkBlanks').onchange = renderStats; qs('#selSort').onchange = renderStats;
+    toggleWin();
+    renderStats();
+  }
+
+  function renderStats(){
+    const win = computeWindow();
+    const region = qs('#selStatsRegion').value;
+    const modeSel = 'both'; // selStatsMode removido; padrão 'Ambos'
+    const includeBlank = qs('#chkBlanks').checked;
+
+    const attempts = state.attemptLog.filter(a=> a.ts>=win.start && a.ts<=win.end && (region==='__all__' || a.regiao===region) && (modeSel==='both' || a.mode===modeSel) && (includeBlank || !a.isBlank));
+
+    // resumo
+    const total = attempts.length;
+    const ok = attempts.filter(a=>a.isCorrect).length;
+    const wrong = total - ok;
+    const blank = attempts.filter(a=>a.isBlank).length;
+    
+    qs('#statsSummary').innerHTML =
+      `<h4 class="text" style="margin:0 0 6px">Estatísticas por questões</h4>`+
+      `<div class="stat-grid">`+
+        `<div class="stat-card"><div class="muted">Questões Respondidas</div><div style="font-size:28px">${total}</div></div>`+
+        `<div class="stat-card"><div class="muted">Acertos</div><div style="font-size:28px;color:var(--ok)">${ok}</div></div>`+
+        `<div class="stat-card"><div class="muted">Erros</div><div style="font-size:28px;color:var(--err)">${wrong}</div></div>`+
+        `<div class="stat-card"><div class="muted">Em branco</div><div style="font-size:28px;color:#ff9c9c">${blank}</div></div>`+
+      `</div>`+
+      `<hr style="border-color:var(--border);margin:16px 0 18px"/>`+
+      `<h4 class="text" style="margin:12px 0 6px">Estatísticas por imagens</h4>`+
+      (function(){ 
+        // Derivar métricas por imagem **contando CADA tentativa de imagem**.
+        // Cada envio gera várias linhas em attemptLog (uma por letra) com o MESMO timestamp (ts).
+        // Para contar tentativas de imagem, agrupamos por (imageId|ts) e somamos as letras daquele ts.
+        const perAttempt = new Map(); // key: imageId|ts -> { total, correct }
+        for(const a of attempts){
+          const key = a.imageId + '|' + a.ts;
+          let r = perAttempt.get(key);
+          if(!r){ r = { total:0, correct:0 }; perAttempt.set(key, r); }
+          r.total++; if(a.isCorrect) r.correct++;
+        }
+        const imagesAnswered = perAttempt.size;
+        let imagesPerfect = 0, imagesWithError = 0;
+        for(const r of perAttempt.values()){
+          if(r.total>0 && r.correct===r.total) imagesPerfect++;
+          else if(r.total>0 && r.correct<r.total) imagesWithError++;
+        }
+        return (
+          `<div class="stat-grid">`+
+            `<div class="stat-card"><div class="muted">Imagens Respondidas</div><div style="font-size:28px">${imagesAnswered}</div></div>`+
+            `<div class="stat-card"><div class="muted">Imagens Corretas</div><div style="font-size:28px;color:var(--ok)">${imagesPerfect}</div></div>`+
+            `<div class="stat-card"><div class="muted">Imagens com 1 ou mais erros</div><div style="font-size:28px;color:var(--err)">${imagesWithError}</div></div>`+
+          `</div>`+
+        `<hr style="border-color:var(--border);margin:16px 0 18px"/>`
+        );
+      })() + `<h4 class="text" style="margin:12px 0 6px">Estatísticas por regiões (por img)</h4>` + (function(){
+  // Por região, agregando por tentativa de IMAGEM (imageId|ts)
+  const regMap = new Map();      // região -> Map(key=imageId|ts -> { total, correct })
+  const regSessions = new Map(); // região -> Set(sessionId)  (quantas VEZES houve teste envolvendo a região)
+
+  const getSessionId = (a) => a.sessionId || a.sid || a.session || a.testId || (`ts:${a.ts}`);
+
+  for (const a of attempts){
+    const key = a.imageId + '|' + a.ts;
+    // --- agregação por tentativa de imagem
+    let m = regMap.get(a.regiao);
+    if(!m){ m = new Map(); regMap.set(a.regiao, m); }
+    let r = m.get(key);
+    if(!r){ r = { total:0, correct:0 }; m.set(key, r); }
+    r.total++; if(a.isCorrect) r.correct++;
+
+    // --- agregação por sessão (para contar "vezes que fez teste" com a região)
+    let sset = regSessions.get(a.regiao);
+    if(!sset){ sset = new Set(); regSessions.set(a.regiao, sset); }
+    sset.add(getSessionId(a));
+  }
+
+  const cards = [];
+  for(const [reg, m] of regMap){
+    let attemptsCount=0, perfect=0, errors=0;
+    for(const r of m.values()){
+      attemptsCount++;
+      if(r.total>0 && r.correct===r.total) perfect++;
+      else if(r.total>0 && r.correct<r.total) errors++;
+    }
+    const testsCount = (regSessions.get(reg) || new Set()).size; // "vezes que testou a região"
+    const pct = attemptsCount ? Math.round((perfect/attemptsCount)*100) : 0;
+
+    cards.push(
+      `<div class="stat-card">`+
+        `<div class="muted">${reg} - ${testsCount} tentativa(s)</div>`+
+        `<div style="display:flex;gap:7px;margin-top:8px;align-items:baseline;flex-wrap:wrap">`+
+          `<span class="muted">Imagens:</span> <b>${attemptsCount}</b>`+
+          `<span class="muted">• ✔:</span> <b style="color:var(--ok)">${perfect}</b>`+
+          `<span class="muted">• ✖:</span> <b style="color:var(--err)">${errors}</b>`+
+          `</span> <b style="color:var(--blue)">Acertos: ${pct}%</b>`+
+        `</div>`+
+      `</div>`
+    );
+  }
+  return `<div class="stat-grid regions-grid">${cards.join('')}</div>`;
+})()
+ + `<h4 class="text" style="margin:12px 0 6px">Estatísticas por regiões (por questões)</h4>` + (function(){
+  // Agregação por QUESTÕES: conta diretamente cada label respondida (correta/errada/blank)
+  // Usa a mesma 'attempts' já disponível no escopo de renderStats()
+  const aggQ = new Map(); // região -> { ok, err }
+  const regSessions = new Map();
+  const getSessionId = (a) => a.sessionId || a.sid || a.session || a.testId || (`ts:${a.ts}`);
+
+  for (const a of attempts){
+    const reg = a.regiao;
+    if(!aggQ.has(reg)) aggQ.set(reg, { ok:0, err:0 });
+    const obj = aggQ.get(reg);
+    if (a.isCorrect) obj.ok++;
+    else obj.err++; // inclui em branco como erro para fins de % de acerto
+
+    let sset = regSessions.get(a.regiao);
+    if(!sset){ sset = new Set(); regSessions.set(a.regiao, sset); }
+    sset.add(getSessionId(a));
+  }
+
+  const cardsQ = [];
+  for (const [reg, m] of aggQ){
+    const totalQ = m.ok + m.err;
+    const testsCount = (regSessions.get(reg) || new Set()).size; // "vezes que testou a região"
+    const pctQ = totalQ ? Math.round((m.ok/totalQ)*100) : 0;
+    cardsQ.push(
+      `<div class="stat-card">`+
+        `<div class="muted">${reg} - ${testsCount} tentativa(s)</div>`+
+        `<div style="display:flex;gap:5px;margin-top:8px;align-items:baseline;flex-wrap:wrap">`+
+          `<span class="muted">Questões:</span> <b>${totalQ}</b>`+
+          `<span class="muted">• ✔:</span> <b style="color:var(--ok)">${m.ok} </b>`+
+          `<span class="muted">• ✖: </span> <b style="color:var(--err)">${m.err} </b>`+
+          `<b style="color:var(--blue)">Acertos: ${pctQ}%</b>`+
+        `</div>`+
+      `</div>`
+    );
+  }
+
+  return `<div class="stat-grid regions-grid">${cardsQ.join('')}</div>`;
+})()
+
+    
+    // agregação por imagem
+const byImg = new Map();
+    for(const a of attempts){
+      if(!byImg.has(a.imageId)) byImg.set(a.imageId, { imageId:a.imageId, regiao:a.regiao, src:(DATASET.images.find(im=>im.id===a.imageId)||{}).src, attempts:0, ok:0, wrong:0, blank:0, letters:{} });
+      const g = byImg.get(a.imageId);
+      g.attempts++; if(a.isCorrect) g.ok++; else g.wrong++; if(a.isBlank) g.blank++;
+      if(!g.letters[a.letra]) g.letters[a.letra] = { attempts:0, ok:0, wrong:0, blank:0 };
+      const L = g.letters[a.letra]; L.attempts++; if(a.isCorrect) L.ok++; else L.wrong++; if(a.isBlank) L.blank++;
+    }
+
+    // ordenar
+    const sortBy = qs('#selSort').value;
+    const list = Array.from(byImg.values());
+    list.forEach(g=>{ g.rate = g.attempts? (g.wrong/(g.attempts||1)) : 0; });
+    list.sort((a,b)=>{
+      if(sortBy==='errors') return (b.wrong - a.wrong) || (b.attempts - a.attempts);
+      if(sortBy==='rate') return (b.rate - a.rate) || (b.attempts - a.attempts);
+      return (b.attempts - a.attempts) || (b.wrong - a.wrong);
+    });
+
+    const rank = qs('#rankList'); rank.innerHTML='';
+    for(const g of list){
+      const div = document.createElement('div'); div.className='rank-item';
+      const head = document.createElement('div'); head.className='rank-head';
+      // --- per-image stats (by attempt: group by timestamp within this image) ---
+      const _imgAttempts = attempts.filter(a=>a.imageId===g.imageId);
+      const _byAttempt = new Map();
+      for(const a2 of _imgAttempts){
+        const k = a2.ts; // each send registers same ts for all letters
+        let r = _byAttempt.get(k);
+        if(!r){ r = { total:0, correct:0, blank:0 }; _byAttempt.set(k, r); }
+        r.total++; if(a2.isCorrect) r.correct++; if(a2.isBlank) r.blank++;
+      }
+      const _attCount = _byAttempt.size;
+      let _perfectCount = 0, _errorCount = 0;
+      for(const r of _byAttempt.values()){
+        if(r.total>0 && r.correct===r.total) _perfectCount++;
+        else if(r.total>0 && r.correct<r.total) _errorCount++;
+      }
+
+      const titulo = document.createElement('div'); titulo.className='titulo-item';
+      /*<div><div style="font-weight:700">${g.imageId}</div><div class="muted">${g.regiao}</div></div>*/
+      titulo.innerHTML = `<div style="margin-bottom:10px; font-weight:700">${g.regiao} - 
+                            <span class="muted">${g.imageId}</span>
+                          </div>
+                          <div class="muted">Tentativas: 
+                            <b style="color:var(--text)">${_attCount}</b> • ✔: 
+                            <b style="color:var(--ok)">${_perfectCount}</b> • ✖: 
+                            <b style="color:var(--err)">${_errorCount}</b>
+                          </div>
+
+
+    `;
+      div.appendChild(titulo);
+
+      head.innerHTML = `<div style="display:flex;align-items:center;gap:10px">
+                          <img src="${g.src||''}" alt="${g.imageId}" style="width:150px;height:75px;object-fit:cover;border-radius:8px;border:1px solid var(--input-border)">
+                        </div>
+                        <div class="rank-actions">
+                          <button class="mini-review" data-img-id="${g.imageId}">Revisar imagem</button>
+                        </div>`;
+      div.appendChild(head);
+      const body = document.createElement('div'); body.className='rank-body';
+      // barras
+      const tot = g.attempts||1; const okw = g.ok/tot*100; const er = g.wrong/tot*100; const bl = g.blank/tot*100;
+      const bar = document.createElement('div'); bar.className='mini-bar';
+      bar.innerHTML = `<div class="mini-ok" style="background-color:var(--ok);width:${okw}%"></div>
+                       <div class="mini-err" style="background-color:var(--err); width:${er}%"></div>`;
+      body.appendChild(bar);
+      // letras
+      const letters = Object.keys(g.letters).sort((a,b)=>a.localeCompare(b,'pt'));
+      const tab = document.createElement('div'); tab.style.marginTop='8px';
+      letters.forEach(L=>{
+        const v = g.letters[L];
+        const row = document.createElement('div'); row.className='alternativas'; row.style.display='flex'; row.style.justifyContent='space-between'; row.style.gap='8px'; row.style.padding='4px 0';
+        row.innerHTML = `<div>
+                          <span class="letter" style="margin-right:8px">${L}</span> 
+                          <span>Tent.:</span> 
+                          <b>${v.attempts}</b> · 
+                          <span class="muted">✔</span> 
+                          <b style="color:var(--ok)">${v.ok}</b> · 
+                          <span class="muted">✖</span> 
+                          <b style="color:var(--err)">${v.wrong}</b>
+                        </div>`+
+                        `<div class="muted">Acertos: 
+                          <b>${v.attempts? Math.round(100*v.ok/v.attempts):0}%</b>
+                        </div>`;
+        tab.appendChild(row);
+      });
+      body.appendChild(tab);
+      div.appendChild(body);
+      rank.appendChild(div);
+    }
+
+    if(list.length===0){ rank.innerHTML = '<div class="muted">Sem tentativas no período selecionado.</div>'; }
+  }
+
+  /* ===== Histórico ===== */
+  function renderHistory(){
+    const list = qs('#historyList');
+    const sess = (state.sessions||[]).slice().sort((a,b)=> (b.startedAt||0) - (a.startedAt||0));
+    if(sess.length===0){ list.innerHTML = '<div class="muted">Você ainda não concluiu nenhum teste.</div>'; return; }
+    list.innerHTML = '';
+    sess.forEach((s,idx)=>{
+      const dt = new Date(s.startedAt||Date.now());
+      const end = s.finishedAt ? new Date(s.finishedAt) : null;
+      const kind = s.kind==='normal' ? 'Teste' : (s.kind==='reviewSession' ? 'Revisão (desta sessão)' : 'Revisão (acumulado)');
+      const title = `${kind} #${sess.length - idx}`;
+      const when = dt.toLocaleString('pt-BR', { dateStyle:'short', timeStyle:'short' });
+      const regions = (s.settings?.regions && s.settings.regions.length) ? s.settings.regions.join(', ') : 'Todas';
+      const div = document.createElement('div'); div.className='history-item';
+      const left = document.createElement('div'); left.className='history-meta';
+      left.innerHTML = `<div style="font-weight:700">${title} <span class="badge">${regions}</span></div><div class="muted"> ${when}${end? ' - '+ end.toLocaleTimeString('pt-BR'):''}</div>`;
+      const btn = document.createElement('button'); btn.className='ok'; btn.textContent='Abrir resultados';
+      btn.onclick = ()=>{ buildReport(s); show('#report'); };
+      div.appendChild(left); div.appendChild(btn);
+      list.appendChild(div);
+    });
+  }
+
+
+  /* =========================
+     Handlers & Navegação
+  ==========================*/
+  qs('#btnStart').onclick = startPreTest;
+  qs('#btnHistory').onclick = ()=>{ renderHistory(); show('#history'); };
+  qs('#btnPreBack').onclick = ()=>show('#home');
+  qs('#btnHistoryBack').onclick = ()=>show('#home');
+  qs('#chkTimer').onchange = (e)=>{ qs('#numTimer').disabled = !e.target.checked; };
+  qs('#chkTimerReview').onchange = (e)=>{ const n = qs('#numTimerReview'); if(n) n.disabled = !e.target.checked; };
+  qs('#btnBegin').onclick = ()=> beginTest('normal', { regions: getSelectedRegions('#selRegionsBox') });
+  qs('#btnCancel').onclick = cancelTest;
+  qs('#btnCheck').onclick = ()=> confirmImage(false);
+  qs('#btnNext').onclick = nextImage;
+  qs('#btnReportBack').onclick = ()=>{ show('#home'); };
+  // revisão (config)
+  qs('#btnReviewSession').onclick = ()=> openPreReview('session','report');
+  qs('#btnReviewAccum').onclick = ()=> openPreReview('accum','home');
+  // estatísticas
+  qs('#btnStats').onclick = ()=>{ buildStats(); show('#stats'); };
+  qs('#btnStatsBack').onclick = ()=> show('#home');
+  // Pré-revisão handlers
+  qs('#btnBeginReview').onclick = ()=>{
+    const regs = getSelectedRegions('#selRegionsReviewBox');
+    const strict = qs('#chkStrictReview').checked;
+    const timerOn = qs('#chkTimerReview').checked;
+    const seconds = parseInt(qs('#numTimerReview').value||'60',10);
+    const kind = (window._reviewKind==='session') ? 'reviewSession' : 'reviewAccum';
+    beginTest(kind, { regions: regs, timerOn, seconds, strict });
+  };
+  qs('#btnPreReviewBack').onclick = ()=>{
+    const from = window._reviewFrom || 'home';
+    show(from==='report' ? '#report' : '#home');
+  };
+
+  // export/import/reset
+  qs('#btnExport').onclick = exportHistory;
+  qs('#btnImport').onclick = ()=> qs('#fileImport').click();
+  qs('#fileImport').onchange = (e)=>{ if(e.target.files?.[0]) importHistory(e.target.files[0]); e.target.value=''; };
+  qs('#btnReset').onclick = ()=>{ if(confirm('Tem certeza que deseja apagar TODO o histórico local?')){ resetState(); alert('Histórico resetado.'); } };
+  qs('#btnExportCSV').onclick = exportCSVSession;
+
+  // dataset import/reset
+  qs('#btnImportDataset').onclick = ()=> qs('#fileDataset').click();
+  qs('#fileDataset').onchange = (e)=>{ if(e.target.files?.[0]) importDatasetFile(e.target.files[0]); e.target.value=''; };
+  qs('#btnResetDataset').onclick = resetDataset;
+
+  // ===== Auto-teste (dev) =====
+  function runSelfTests(){
+    const tests = [];
+    function t(name, fn){
+      try{ fn(); tests.push([name, true]); }
+      catch(e){ console.error('Teste falhou:', name, e); tests.push([name, false, e.message]); }
+    }
+    
+    // normalize
+    t('normalize remove acentos e stopwords', ()=>{
+      const r = normalize('O Ápice da Raiz');
+      if(r !== 'apice raiz') throw new Error(r);
+    });
+    // strict
+    t('strictMatch iguala canônico exato (ignorando acentos/caixa)', ()=>{
+      if(!strictMatch('Apice Radicular', 'ápice radicular')) throw new Error('strictMatch falhou');
+    });
+    // strict rejeita sinônimo
+    t('strictMatch rejeita sinônimo', ()=>{
+      if(strictMatch('assoalho sinusal', 'assoalho do seio maxilar')) throw new Error('strict aceitou sinônimo');
+    });
+    // tolerant com sinônimo
+    t('tolerantMatch aceita sinônimos', ()=>{
+      if(!tolerantMatch('assoalho sinusal', 'assoalho do seio maxilar', ['assoalho sinusal'])) throw new Error('sinônimo não aceito');
+    });
+    // tolerant com pequeno typo
+    t('tolerantMatch aceita 1-2 typos', ()=>{
+      if(!tolerantMatch('sepo sinusal', 'septo sinusal', [])) throw new Error('typo não aceito');
+    });
+    // tolerant rejeita erro grosseiro
+    t('tolerantMatch rejeita erro grosseiro', ()=>{
+      if(tolerantMatch('septoooo sinusal', 'septo sinusal', [])) throw new Error('aceitou erro grosseiro');
+    });
+
+    // DATASET sanity
+    t('DATASET de exemplo contém imagens', ()=>{
+      if(!DATASET.images.length) throw new Error('sem imagens');
+    });
+    // getSelectedRegions escopo
+    t('getSelectedRegions funciona por contêiner', ()=>{
+      const div = document.createElement('div');
+      div.id = 'tmpRegions';
+      div.innerHTML = '<input class="region-check" value="A" checked><input class="region-check" value="B">';
+      document.body.appendChild(div);
+      const r = getSelectedRegions('#tmpRegions');
+      if(r.length!==1 || r[0]!== 'A') throw new Error('escopo incorreto');
+      div.remove();
+    });
+
+    // Pré-revisão: lista só regiões testadas quando kind=session
+    t('openPreReview(session) lista somente regiões testadas na última sessão', ()=>{
+      state.lastSession = { id:'Sx', startedAt: Date.now(), settings:{}, items:[
+        { regiao:'Incisivos Sup.' }, { regiao:'Caninos Sup.' }
+      ]};
+      openPreReview('session','report');
+      const vals = Array.from(document.querySelectorAll('#selRegionsReviewBox .region-check')).map(el=>el.value);
+      const set = new Set(vals);
+      if(!(set.has('Incisivos Sup.') && set.has('Caninos Sup.')) || set.size!==2) throw new Error('regiões incorretas na pré-revisão sessão');
+    });
+
+    // beginTest(reviewSession) respeita timer e estrito vindos da pré-revisão
+    t('beginTest(reviewSession) usa timer/estrito da pré-revisão', ()=>{
+      // preparar sessão com erro para existir baralho
+      state.lastSession = { id:'S1', startedAt: Date.now(), settings:{}, items:[
+        { imageId:'mx_molares_01', regiao:'Molares Superiores', letra:'a', isCorrect:false }
+      ]};
+      beginTest('reviewSession', { regions:['Molares Superiores'], timerOn:true, seconds:45, strict:true });
+      if(!session || !session.settings.timerOn || session.settings.seconds!==45 || !session.settings.strict) throw new Error('config do timer/estrito não aplicada');
+    });
+
+    // ===== Novos testes: carregamento de dataset =====
+    t('validateDataset rejeita sem images', ()=>{
+      let threw = false; try{ validateDataset({}); }catch(e){ threw = true; }
+      if(!threw) throw new Error('não rejeitou');
+    });
+    t('bootstrapDataset usa dataset salvo quando houver', ()=>{
+      const sample = { version:'test', images:[{ id:'x', regiao:'Molares Superiores', src:'x.jpg', labels:[{ letra:'a', canonical:'x' }] }] };
+      localStorage.setItem(DS_KEY, JSON.stringify(sample));
+      bootstrapDataset();
+      if((DATASET.images||[]).length!==1 || DATASET.images[0].id!=='x') throw new Error('não aplicou dataset salvo');
+      // clean up
+      localStorage.removeItem(DS_KEY); DATASET = DEFAULT_DATASET; updateDatasetBadge();
+    });
+    // regiões custom + UI
+    t('REGIOES contém Tecidos e Estruturas', ()=>{
+      if(!REGIOES.includes('Tecidos e Estruturas')) throw new Error('REGIOES não contém nova região');
+    });
+    t('REGIOES não contém Molares Superiores/Inferiores', ()=>{
+      if(REGIOES.includes('Molares Superiores') || REGIOES.includes('Molares Inferiores')) throw new Error('REGIOES ainda contém molares');
+    });
+    t('Pré-teste lista a nova região', ()=>{
+      hydrateRegions();
+      const has = Array.from(document.querySelectorAll('#selRegionsBox .region-check')).some(el=>el.value==='Tecidos e Estruturas');
+      if(!has) throw new Error('Pré-teste não listou a nova região');
+    });
+
+    alert('Auto‑teste concluído:\n' + tests.map(([n,ok,msg])=> '• ' + (ok?'✅':'❌') + ' ' + n + (ok?'':(' — ' + msg))).join('\n'));
+  }
+  qs('#btnRunTests').onclick = runSelfTests;
+
+  // iniciar
+  bootstrapDataset();
+  hydrateRegions();
+  </script>
+
+  <!-- Extra tests appended to ensure strict/tolerant behavior on stopwords -->
+  <script>
+  (function(){
+    function runExtraStrictStopwordTests(){
+      const tests = [];
+      function t(name, fn){ try{ fn(); tests.push([name, true]); } catch(e){ console.error('Teste extra falhou:', name, e); tests.push([name, false, e.message]); } }
+      
+      // Estrito não aceita variação de stopword
+      t('strictMatch não aceita variação de stopword (de vs da)', ()=>{
+        if(strictMatch('assoalho da seio maxilar', 'assoalho do seio maxilar')) throw new Error('estrito aceitou de/da');
+      });
+      // Tolerante ignora variação de stopword
+      t('tolerantMatch ignora variação de stopword (de vs da)', ()=>{
+        if(!tolerantMatch('assoalho da seio maxilar', 'assoalho do seio maxilar', [])) throw new Error('tolerante não ignorou stopwords');
+      });
+      
+      alert('Auto‑teste extra:\n' + tests.map(([n,ok,msg])=> '• ' + (ok?'✅':'❌') + ' ' + n + (ok?'':(' — ' + msg))).join('\n'));
+    }
+    
+    // Hook no botão existente para rodar também os testes extras
+    const btn = document.querySelector('#btnRunTests');
+    if(btn){
+      const prev = btn.onclick;
+      btn.onclick = function(){
+        try{ if(typeof prev === 'function') prev(); } finally { runExtraStrictStopwordTests(); }
+      };
+    }
+  })();
+  
+  
+  // === Advanced modal (delegated events, robust even if DOM not ready)
+  (function(){
+    const $ = (sel)=> document.querySelector(sel);
+    const modal = $('#advancedModal');
+    const open = ()=>{ modal?.classList.remove('hidden'); modal?.setAttribute('aria-hidden','false'); };
+    const close = ()=>{ modal?.classList.add('hidden'); modal?.setAttribute('aria-hidden','true'); };
+
+    // delegated clicks
+    document.addEventListener('click', (ev)=>{
+      const t = ev.target;
+      if(t.closest && t.closest('#btnAdvanced')){ open(); }
+      else if(t.closest && t.closest('#advClose')){ close(); }
+      else if(t.closest && t.closest('#advancedModal .modal-backdrop')){ close(); }
+      else if(t.closest && t.closest('#advExport')){ if(typeof exportHistory==='function') exportHistory(); }
+      else if(t.closest && t.closest('#advImport')){ document.getElementById('fileImport')?.click(); }
+      else if(t.closest && t.closest('#advResetDataset')){ if(typeof resetDataset==='function') resetDataset(); }
+      else if(t.closest && t.closest('#advRunTests')){ document.getElementById('btnRunTests')?.click(); }
+    });
+  })();
+
+
+  // helpers to open/close Advanced modal (fallback for environments where listeners fail)
+  function advOpen(){
+    var m = document.getElementById('advancedModal');
+    if(!m) return;
+    m.classList.remove('hidden');
+    m.setAttribute('aria-hidden','false');
+  }
+  function advClose(){
+    var m = document.getElementById('advancedModal');
+    if(!m) return;
+    m.classList.add('hidden');
+    m.setAttribute('aria-hidden','true');
+  }
+
+  // === Mini Revisão (Estatísticas)
+  (function(){
+    const $ = (s)=>document.querySelector(s);
+    const $$ = (s)=>Array.from(document.querySelectorAll(s));
+    let miniImage = null;
+
+    function openMini(id){
+      const img = (DATASET.images||[]).find(im=> im.id===id);
+      if(!img){ alert('Imagem não encontrada no dataset.'); return; }
+      miniImage = img;
+      $('#miniTitle').textContent = `Revisão rápida — ${img.id}`;
+      $('#miniImg').src = img.src; $('#miniImg').alt = img.id;
+      const box = $('#miniLetters'); box.innerHTML = '';
+      img.labels.sort((a,b)=> a.letra.localeCompare(b.letra,'pt')).forEach(lab=>{
+        const row = document.createElement('div'); row.className='letter-row';
+        const tag = document.createElement('div'); tag.className='letter'; tag.textContent = lab.letra;
+        const input = document.createElement('input'); input.type='text'; input.className='ans'; input.placeholder='Digite o nome da estrutura'; input.dataset.letra = lab.letra;
+        row.appendChild(tag); row.appendChild(input); box.appendChild(row);
+      });
+      $('#miniVerify').disabled = true;
+      $('#miniSend').disabled = false;
+      const modal = $('#miniModal');
+      modal.classList.remove('hidden'); modal.setAttribute('aria-hidden','false');
+    }
+
+    window.miniClose = function(){
+      const modal = $('#miniModal');
+      modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true');
+    };
+
+    function verifyMini(){
+      if(!miniImage) return;
+      const inputs = $$('#miniLetters input.ans');
+      inputs.forEach(inp=>{
+        const letra = inp.dataset.letra;
+        const lab = miniImage.labels.find(l=>l.letra===letra);
+        const already = inp.parentElement.querySelector('.gabarito');
+        if(!already){
+          const span = document.createElement('span'); span.className='gabarito'; span.textContent = lab.canonical;
+          inp.after(span);
+        }
+      });
+    }
+
+    function sendMini(){
+      if(!miniImage) return;
+      const strict = false; // mini revisão sempre em modo tolerante
+      const inputs = $$('#miniLetters input.ans');
+      const results = [];
+      inputs.forEach(inp=>{
+        const letra = inp.dataset.letra;
+        const lab = miniImage.labels.find(l=>l.letra===letra);
+        const answer = (inp.value||'').trim();
+        const isBlank = answer.length===0;
+        let ok=false;
+        if(!isBlank){
+          ok = strict ? strictMatch(answer, lab.canonical)
+                      : tolerantMatch(answer, lab.canonical, lab.aliases||[]);
+        }
+        results.push({ imageId: miniImage.id, regiao: miniImage.regiao, letra, answered: answer, isBlank, isCorrect: ok, canonical: lab.canonical });
+        // pintar e travar
+        inp.classList.remove('ok','err');
+        inp.classList.add(ok? 'ok':'err');
+        inp.disabled = true;
+      });
+
+      // registrar como tentativa (sem sobrescrever lastSession)
+      applyResultsMini(results, strict);
+      $('#miniVerify').disabled = false;
+      $('#miniSend').disabled = true;
+    }
+
+    window.applyResultsMini = function(results, strict){
+      const ts = Date.now();
+      for(const r of results){
+        const cid = `${r.imageId}|${r.letra}`;
+        if(!state.cards[cid]) state.cards[cid] = { attempts:0, correct:0, wrong:0, blank:0, streak:0, everWrong:false, lastSeen:0 };
+        const c = state.cards[cid];
+        c.attempts++;
+        if(r.isCorrect){ c.correct++; c.streak++; }
+        else { c.wrong++; if(r.isBlank) c.blank++; c.streak = 0; c.everWrong = true; }
+        c.lastSeen = ts;
+        state.attemptLog.push({ ts, sessionId:`M${ts}`, kind:'mini', imageId:r.imageId, regiao:r.regiao, letra:r.letra, cardId:cid, mode: strict? 'e':'t', timerOn:false, seconds:0, answered: r.answered, isBlank: r.isBlank, isCorrect: r.isCorrect });
+      }
+      saveState();
+      // atualizar estatísticas em tempo real (se a tela estiver aberta)
+      if(!qs('#stats').classList.contains('hidden')){
+        renderStats();
+      }
+    };
+
+    // delegate clicks
+    document.addEventListener('click', (ev)=>{
+      const t = ev.target;
+      if(t.closest && t.closest('.mini-review')){
+        const id = t.closest('.mini-review').getAttribute('data-img-id');
+        openMini(id);
+      } else if(t.closest && t.closest('#miniSend')){
+        sendMini();
+      } else if(t.closest && t.closest('#miniVerify')){
+        verifyMini();
+      }
+    });
+  })();
+
+
+// ==== Charts: Accuracy by Region (Home only) ====
+(function(){
+  let __homeCharts = [];
+  function destroyHomeCharts(){
+    if (__homeCharts && __homeCharts.length){
+      __homeCharts.forEach(ch => { try{ ch.destroy(); }catch(e){} });
+    }
+    __homeCharts = [];
+  }
+  function calcRegionAccuracy(attemptLog){
+    const map = new Map();
+    for(const a of (attemptLog||[])){
+      const reg = a.regiao || '(sem região)';
+      let m = map.get(reg);
+      if(!m){ m = { ok:0, total:0 }; map.set(reg, m); }
+      m.total++;
+      if(a.isCorrect) m.ok++;
+    }
+    const rows = [...map.entries()].map(([reg, m])=>{
+      const pct = m.total ? Math.round((m.ok/m.total)*100) : 0;
+      return { reg, pct };
+    }).sort((a,b)=> a.pct - b.pct);
+    return rows;
+  }
+  function renderAccByRegionChart(){
+    const cv = document.getElementById('chAccByRegion');
+    if(!cv || !window.Chart) return;
+    const st = (typeof state!=='undefined' && state && Array.isArray(state.attemptLog)) ? state
+              : (function(){ try{ const raw = localStorage.getItem('rxodonto_v1'); return raw? JSON.parse(raw) : {attemptLog:[]}; }catch(e){ return {attemptLog:[]}; }})();
+    const rows = calcRegionAccuracy(st.attemptLog||[]);
+    const css = getComputedStyle(document.documentElement);
+    const cPri = (css.getPropertyValue('--blue')||'#3b82f6').trim();
+    
+    function pastelPalette(n){
+      const arr = [];
+      for(let i=0;i<n;i++){
+        const h = Math.round((360/n) * i);     // distribui no círculo
+        const s = 80;                           // saturação baixa
+        const l = 70;                           // luminosidade alta
+        arr.push(`hsl(${h} ${s}% ${l}%)`);
+      }
+      return arr;
+    }
+
+    const labels = rows.map(r=>r.reg);
+    const dataVals = rows.map(r=>r.pct);
+    const colors = pastelPalette(labels.length);
+
+    // set dynamic height based on viewport
+
+
+    { fitChartToRemaining(cv, { gap:50, min:260, max:null }); }
+
+
+    setTimeout(() => fitChartToRemaining(cv), 0);
+    const ch = new Chart(cv, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Acertos (%)',
+          data: dataVals,
+          backgroundColor: colors,
+          borderColor: colors.map(c => c.replace('hsl', 'hsl').replace('% %', '% / 0.9')), // opcional
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (c) => `${c.parsed.y}%`
+            }
+          }
+        },
+        scales: {
+          y: {
+            min: 0,
+            max: 100,
+            ticks: {
+              callback: v => v + '%'
+            },
+            grid: {
+              color: (ctx) => {
+                const val = ctx.tick?.value;
+                if (typeof val !== 'number') return 'rgba(0,0,0,0.08)';
+                return val >= 70
+                  ? 'rgba(16, 185, 129, 0.45)'   // ≥70% verde
+                  : 'rgba(239, 68, 68, 0.45)';   // <70% vermelho
+              },
+              lineWidth: 1
+            },
+            border: { display: false }
+          },
+          x: {
+            grid: {
+              color: 'rgba(0,0,0,0.06)', // grade do X clarinha (ou use display:false)
+            }
+          }
+        }
+      },
+
+    });
+
+    // manter a altura ajustada sempre que a janela mudar
+    window.addEventListener('resize', () => fitChartToRemaining(cv), {passive:true});
+    window.addEventListener('orientationchange', () => fitChartToRemaining(cv));
+
+    // Observa mudanças no container e recalcula altura
+    try {
+      const ro = new ResizeObserver(() => fitChartToRemaining(cv));
+      ro.observe(cv.parentElement || cv);
+    } catch(e) {}
+
+
+    // keep height responsive on resize (lightweight)
+    window.addEventListener('resize', () => {
+      const el = document.getElementById('chAccByRegion');
+      if(!el) return;
+      el.style.height = Math.max(260, Math.floor(window.innerHeight*0.38)) + 'px';
+    }, {passive:true});
+    /*ch.canvas.parentNode.style.height = '80%';
+    ch.resize();*/
+
+
+
+    __homeCharts.push(ch);
+  }
+  (function hookShow(){
+    if(!window.show) return;
+    const _oldShow = window.show;
+    window.show = function(id){
+      _oldShow(id);
+      if(id==='#home'){ destroyHomeCharts(); renderAccByRegionChart(); }
+      else { destroyHomeCharts(); }
+    };
+  })();
+  document.addEventListener('DOMContentLoaded', function(){
+    const home = document.getElementById('home');
+    if(home && !home.classList.contains('hidden')){
+      destroyHomeCharts();
+      renderAccByRegionChart();
+    }
+  });
+})();
+</script>
+
+  <!-- Modal: Configurações Avançadas -->
+  <div id="advancedModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" onclick="advClose()"></div>
+    <div class="modal-dialog panel" role="dialog" aria-modal="true" aria-labelledby="advTitle" style="max-width:740px">
+      <div class="modal-header" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h3 id="advTitle" style="margin:0">Configurações Avançadas</h3>
+        <button id="advClose" class="ghost" onclick="advClose()">Fechar</button>
+      </div>
+      <div class="modal-body">
+        <p class="muted" style="margin-top:0">Opções de backup e desenvolvimento.</p>
+        <div class="btns" style="margin:12px 0 0">
+          <button id="advExport" class="" onclick="window.exportHistory && exportHistory()">Exportar histórico (JSON)</button>
+          <button id="advImport" class="" onclick="document.getElementById('fileImport') && document.getElementById('fileImport').click()">Importar histórico (JSON)</button>
+          <button id="advResetDataset" class="ghost" onclick="window.resetDataset && resetDataset()">Restaurar dataset padrão</button>
+          <button id="advRunTests" class="ghost" onclick="document.getElementById('btnRunTests') && document.getElementById('btnRunTests').click()">Auto‑teste (dev)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Mini Revisão de uma Imagem -->
+  <div id="miniModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" onclick="miniClose()"></div>
+    <div class="modal-dialog panel" role="dialog" aria-modal="true" aria-labelledby="miniTitle" style="max-width:900px">
+      <div class="modal-header" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h3 id="miniTitle" style="margin:0">Revisão rápida</h3>
+        <button id="miniCloseBtn" class="ghost" onclick="miniClose()">Fechar</button>
+      </div>
+      <div class="modal-body" style="margin-top:8px">
+        <div class="imgbox"><img id="miniImg" alt="Imagem" /></div>
+        <div class="inputs">
+          <div id="miniLetters"></div>
+          <div class="btns" style="margin-top:12px">
+            <button id="miniSend" class="ok">Enviar</button>
+            <button id="miniVerify" class="button" disabled>Verificar respostas</button>
+          </div>
+          <div class="muted" style="margin-top:6px;font-size:12px">Dica: Envie primeiro para registrar a tentativa; depois use "Verificar respostas" para ver o gabarito abaixo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Auto‑load dataset padrão do repositório (robusto) -->
+<script>
+(function(){
+  const DATASET_URL = 'Site_Estudo/dataset_ready_FINAL_plus_TED.json';
+  const DS_KEY = "rxodonto_v1_dataset";
+
+  // Função para aplicar dataset no app (cobre vários nomes que você já usa)
+  async function applyDataset(ds){
+    // persiste (não toca nas estatísticas)
+    try{ localStorage.setItem(DS_KEY, JSON.stringify(ds)); }catch(e){ console.warn('LS dataset falhou:', e); }
+
+    // coloca em memória
+    try{ window.DATASET = ds; }catch(e){}
+
+    // tenta reindexar/regiões/UI com os ganchos conhecidos do app
+    try{ if(typeof validateDataset==='function') validateDataset(ds); }catch(e){ console.warn('validateDataset:', e); }
+    try{ if(typeof reindexDataset==='function') reindexDataset(); }catch(e){}
+    try{ if(typeof hydrateRegions==='function') hydrateRegions(); }catch(e){}
+    try{ if(typeof updateDatasetBadge==='function') updateDatasetBadge(); }catch(e){}
+    try{ if(typeof renderHome==='function') renderHome(); }catch(e){}
+    try{ if(typeof renderStats==='function') renderStats(); }catch(e){}
+    try{ if(typeof onDatasetLoaded==='function') onDatasetLoaded(ds); }catch(e){}
+  }
+
+  async function loadDatasetAuto(){
+    // Se rodando via file://, fetch do JSON externo costuma falhar (CORS)
+    const isFile = location.protocol === 'file:';
+    try{
+      const res = await fetch(DATASET_URL, { cache: 'no-cache' });
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      const ds = await res.json();
+      await applyDataset(ds);
+      console.log('[AutoDataset] carregado de', DATASET_URL);
+    }catch(err){
+      console.warn('[AutoDataset] não conseguiu buscar via fetch:', err && err.message);
+      if(isFile){
+        // Aviso específico: precisa servir via HTTP para permitir fetch local
+        const warn = document.getElementById('datasetAutoError');
+        if(warn){
+          warn.textContent = '';
+          warn.style.display = 'block';
+        }
+      }else{
+        const warn = document.getElementById('datasetAutoError');
+        if(warn){
+          warn.textContent = 'Falha ao carregar o dataset padrão em ' + DATASET_URL + '. ' +
+                             'Verifique se o arquivo existe no repositório e se o caminho está correto.';
+          warn.style.display = 'block';
+        }
+      }
+    }
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadDatasetAuto);
+  else loadDatasetAuto();
+})();
+</script>
+<!-- /Auto‑load dataset -->
+
+</body>
+</html>
