@@ -99,8 +99,10 @@ img, canvas, video { max-width: 100%; height: auto; display: block; }
     .letter-row{display:grid;grid-template-columns:60px 1fr;align-items:center;margin-bottom:10px}
     .letter{margin-left: 6px;font-weight:800;font-size:18px;background:#0e1426;border:2px solid var(--input-border);color:#bcd0ff;padding:8px 12px;border-radius:999px;display:inline-flex;justify-content:center;align-items:center;width:34px;height:34px}
     .letter.ok{outline:1px var(--ok)}
+    .letter.ok2{outline:1px var(--ok2)}
     .letter.err{outline:1px var(--err)}
     .ans.ok{outline:2px solid var(--ok)}
+    .ans.ok2{outline:2px solid var(--ok2)}
     .ans.err{outline:2px solid var(--err)}
     .ans-note{font-size:12px;color:#ff9c9c;margin-left:62px;margin-top:-6px;margin-bottom:6px}
     .ans-note.blank{color:#ffb0b0}
@@ -119,12 +121,15 @@ img, canvas, video { max-width: 100%; height: auto; display: block; }
     .report-body{padding:12px}
     .tag{padding:2px 8px;border-radius:999px;border:1px solid var(--input-border);background:#131a2c;color:#9fb1e7;font-size:12px}
     .resp.ok{background: transparent;color: var(--ok) !important} /* report: keep only letter colored */
+    .resp.ok2{background: transparent;color: var(--ok2) !important} /* report: keep only letter colored */
     .resp.err{color: var(--err) !important} /* report: keep only letter colored */
     .resp.blank{color:#ff9c9c}
     .resp .gabarito{color:var(--blue)}
     .letter.ok{ color: var(--ok); border-color: var(--ok); }
+    .letter.ok2{ color: var(--ok2); border-color: var(--ok2); }
     /* ensure color applies in report & review summaries */
     .report-item .letter.ok{ color: var(--ok) !important; border-color: var(--ok) !important; }
+    .report-item .letter.ok2{ color: var(--ok2) !important; border-color: var(--ok2) !important; }
     .report-item .letter.err{ color: var(--err) !important; border-color: var(--err) !important; }
     .report-item .letter.blank{ color: #ff9c9c !important; border-color: #ff9c9c !important; }
     /* ensure letter background is not filled in report; color only the glyph and border */
@@ -1325,7 +1330,7 @@ function fitChartToRemaining(cv, { gap=50, min=220, max=null } = {}){
       const head = document.createElement('div'); head.className='report-head';
       const im = document.createElement('img'); im.src = img.src || ''; im.alt = img.id; head.appendChild(im);
       const meta = document.createElement('div');
-      meta.innerHTML = `<div style="font-weight:700">${img.id}</div><div class="muted">${img.regiao}</div>`;
+      meta.innerHTML = `<div class="hidden" style="font-weight:700">${img.id}</div><div class="muted">${img.regiao}</div>`;
       head.appendChild(meta);
       const tags = document.createElement('div'); tags.className='tags';
       const okN = img.letters.filter(l=>l.isCorrect).length;
