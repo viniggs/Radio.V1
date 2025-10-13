@@ -119,6 +119,7 @@ img, canvas, video { max-width: 100%; height: auto; display: block; }
     .report-head img{width:120px;height:80px;object-fit:cover;border-radius:10px;border:1px solid var(--input-border)}
     .tags{display:flex;gap:8px;flex-wrap:wrap}
     .report-body{padding:12px}
+    .linee{margin-bottom:5px}
     .tag{padding:2px 8px;border-radius:999px;border:1px solid var(--input-border);background:#131a2c;color:#9fb1e7;font-size:12px}
     .resp.ok{background: transparent;color: var(--ok) !important} /* report: keep only letter colored */
     .resp.ok2{background: transparent;color: var(--ok2) !important} /* report: keep only letter colored */
@@ -416,13 +417,6 @@ input[type="text"], input[type="number"], select, button {
 .letter-row > .ans{
   min-width:0; /* permite encolher dentro do grid */
 }
-
-
-
-
-.report-body > .letter.ok2{margin-top: 10px}
-.report-body > .letter.err{margin-top: 10px}
-.report-body > .letter.blank{margin-top: 10px}
 
 
 
@@ -1342,7 +1336,7 @@ function fitChartToRemaining(cv, { gap=50, min=220, max=null } = {}){
       const body = document.createElement('div'); body.className='report-body';
       img.letters.sort((a,b)=>a.letra.localeCompare(b.letra,'pt'));
       img.letters.forEach(l=>{
-        const line = document.createElement('div');
+        const line = document.createElement('div'); line.className='linee';
         const cls = l.isCorrect? 'ok2' : (l.isBlank? 'blank' : 'err');
         let html = `<span class="letter ${cls}" style="${cls==='ok2'?'color:var(--ok2);border-color:var(--ok2);background:transparent;':(cls==='err'?'color:var(--err);border-color:var(--err);background:transparent;':'color:#ff9c9c;border-color:#ff9c9c;background:transparent;')}" style="margin-right:3px">${l.letra}</span> <span class="resp ${cls}">${l.isBlank? '(em branco)': escapeHtml(l.answered)}</span>`;
         if(!l.isCorrect){ html += ` · <span class="gabarito">${escapeHtml(l.canonical)}</span>`; }
