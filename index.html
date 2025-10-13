@@ -722,7 +722,7 @@ function fitChartToRemaining(cv, { gap=50, min=220, max=null } = {}){
       </div>
       <div id="reportList"></div>
       <div class="btns" style="margin-bottom:14px">
-        <button id="btnReportBack" class="primary">Voltar ao início</button>
+        <button id="btnReportBack2" class="primary">Voltar ao início</button>
       </div>
     </section>
 
@@ -784,7 +784,7 @@ function fitChartToRemaining(cv, { gap=50, min=220, max=null } = {}){
       <hr style="border-color:var(--border);margin:16px 0 18px"/>
       <h4 style="margin:6px 0 8px">Imagens com mais erros</h4>
       <div id="rankList"></div>
-      <button id="btnStatsBack" class="primary">Voltar</button>
+      <button id="btnStatsBack2" class="primary">Voltar</button>
     </section>
 
 
@@ -1705,12 +1705,14 @@ const byImg = new Map();
   qs('#btnCheck').onclick = ()=> confirmImage(false);
   qs('#btnNext').onclick = nextImage;
   qs('#btnReportBack').onclick = ()=>{ show('#home'); };
+  qs('#btnReportBack2').onclick = ()=>{ show('#home'); };
   // revisão (config)
   qs('#btnReviewSession').onclick = ()=> openPreReview('session','report');
   qs('#btnReviewAccum').onclick = ()=> openPreReview('accum','home');
   // estatísticas
   qs('#btnStats').onclick = ()=>{ buildStats(); show('#stats'); };
   qs('#btnStatsBack').onclick = ()=> show('#home');
+  qs('#btnStatsBack2').onclick = ()=> show('#home');
   // Pré-revisão handlers
   qs('#btnBeginReview').onclick = ()=>{
     const regs = getSelectedRegions('#selRegionsReviewBox');
