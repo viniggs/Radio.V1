@@ -475,7 +475,7 @@
         {
           "letra": "a",
           "canonical": "Sutura Intermaxilar",
-          "aliases": []
+          "aliases": ["Sutura palatina mediana"]
         },
         {
           "letra": "b",
@@ -536,7 +536,7 @@
         {
           "letra": "d",
           "canonical": "Sutura Intermaxilar",
-          "aliases": []
+          "aliases": ["Sutura palatina mediana"]
         }
       ]
     },
@@ -563,7 +563,7 @@
         {
           "letra": "d",
           "canonical": "Sutura intermaxilar",
-          "aliases": []
+          "aliases": ["Sutura palatina mediana"]
         }
       ]
     },
@@ -595,7 +595,7 @@
         {
           "letra": "e",
           "canonical": "Sutura Intermaxilar",
-          "aliases": []
+          "aliases": ["Sutura palatina mediana"]
         }
       ]
     },
@@ -646,12 +646,12 @@
         {
           "letra": "b",
           "canonical": "Sutura intermaxilar",
-          "aliases": []
+          "aliases": ["Sutura palatina mediana"]
         },
         {
           "letra": "c",
           "canonical": "Projeção do lábio",
-          "aliases": []
+          "aliases": ["Projeção do lábio superior"]
         }
       ]
     },
@@ -685,7 +685,7 @@
         {
           "letra": "b",
           "canonical": "Sutura intermaxilar",
-          "aliases": []
+          "aliases": ["Sutura palatina mediana"]
         },
         {
           "letra": "c",
